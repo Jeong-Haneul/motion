@@ -3,7 +3,7 @@
 수치 임계값 없이, **말로 된 대립쌍과 범주**로 자세를 특정한다. 주석자는 자세를 보고 각 축의 질문에 답한다.
 각 축에는 **좌우·상하·전후 반전**을 했을 때 값이 어떻게 변하는지가 함께 정의되어 있다.
 
-구현·스키마: `../axes.py`, `posture_axes.schema.json` (수치 기반 측정 구현은 선택 사항으로 `posture-labeling-system.md`에 있다)
+정의·스키마: `../axes.py`, `posture_axes.schema.json`
 
 ## 1. 설계 원칙
 
