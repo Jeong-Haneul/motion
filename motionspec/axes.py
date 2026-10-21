@@ -1,258 +1,356 @@
-"""PoseAxes v0.3 - 10 qualitative posture label axes (no thresholds).
+"""PoseAxes v0.4 - whole-body axes + one common rule applied to every body part (qualitative, no thresholds).
 
-An axis is a named contrast answered by looking at the pose. Each axis lists its verbal values, a neutral value, and
-how it behaves under the two symmetry operations the label system is built around:
-  LR  left-right flip     UD  up-down flip
-Behaviours: "same" (value unchanged) or ("swap", map) (values exchange). Flipping twice returns the original label,
-so mirrored data can be labelled for free.
+Nominal axes: 6 whole-body axes + 4 part axes = 10. Every part (몸통, 머리, 왼/오른 팔, 왼/오른 손, 왼/오른 다리)
+answers the same 4 part questions, so the slots actually used are 6 + 8 x 4, but a label only writes what differs
+from the defaults (대분류 template, then style priors).
 
-Limb axes (ARM, LEG) are *sided*: one value means both sides; "굽힘@왼/폄@오른" gives each side its own value.
-Single-sided values ("윙크@왼") exist on FACE and the extension axes. The LR flip swaps every 왼/오른.
+Directions are in the body (pelvis) frame: 위 = toward the head, 앞 = belly side, 왼쪽/오른쪽 = the body's own sides.
+How the body sits in the world is the 상하 axis, so the up-down flip only touches 상하/대분류.
+Limb values may say 바깥/안쪽 (relative to that limb's side); they are stored as absolute 왼쪽/오른쪽.
+Face expressions are a separate system and are not part of these labels.
 """
 from __future__ import annotations
 
 import json
 import math
+from itertools import combinations
 
-SW_SIDE = {"왼": "오른", "오른": "왼"}
-SIDES = ("왼", "오른")
-_NEUTRAL_SIDE_ORDER = {"왼": 0, "오른": 1}
-
-AXES = {
-    # ---------------- 1. 범주
-    "BASE": dict(group="범주", name="대분류", q="몸을 무엇이 어떻게 받치고 있나?",
-                 values=["서기", "앉기", "눕기", "꿇기", "쪼그리기", "기대기", "짚기", "공중"], neutral="서기",
-                 anchors={"서기": "두 발로 선 차렷·대기 자세", "앉기": "의자나 바닥에 엉덩이로 앉음", "눕기": "등·배·옆으로 바닥에 누움",
-                          "꿇기": "무릎으로 바닥을 짚음(정좌 포함)", "쪼그리기": "발로 딛고 깊이 웅크림", "기대기": "벽·물체에 몸을 맡김",
-                          "짚기": "손으로 체중을 받침(엎드려뻗쳐·물구나무)", "공중": "어디에도 닿지 않음(점프)"},
-                 ops=dict(LR="same", UD=("swap", {"서기": "짚기", "짚기": "서기"}))),
-    # ---------------- 2~3. 비대칭 (뒤집으면 값이 바뀜)
-    "LR": dict(group="비대칭", name="좌우", q="좌우가 같은가? 아니면 몸이 어느 쪽으로 쏠리거나 어느 쪽이 주도하나?",
+# ----------------------------------------------------------------------------- whole-body axes
+GLOBAL = {
+    "대분류": dict(q="몸을 무엇이 어떻게 받치고 있나?",
+                values=["서기", "앉기", "눕기", "꿇기", "쪼그리기", "기대기", "짚기", "공중"], neutral="서기",
+                anchors={"서기": "두 발로 선 차렷·대기 자세", "앉기": "의자나 바닥에 엉덩이로 앉음", "눕기": "바닥에 누움",
+                         "꿇기": "무릎으로 바닥을 짚음(정좌 포함)", "쪼그리기": "발로 딛고 깊이 웅크림", "기대기": "벽·물체에 몸을 맡김",
+                         "짚기": "손으로 체중을 받침(엎드려뻗쳐·물구나무)", "공중": "어디에도 닿지 않음(점프)"},
+                ops=dict(LR="same", UD=("swap", {"서기": "짚기", "짚기": "서기"}))),
+    "좌우": dict(q="좌우가 같은가? 아니면 몸이 어느 쪽으로 쏠리거나 어느 쪽이 주도하나?",
                values=["대칭", "왼 우세", "오른 우세"], neutral="대칭",
-               anchors={"대칭": "만세, 차렷", "왼 우세": "왼발이 앞/위, 다리를 왼쪽으로 비껴 앉음", "오른 우세": "오른발로 차기, 오른손 흔들기"},
+               anchors={"대칭": "만세, 차렷", "왼 우세": "왼발 앞 서기, 다리를 왼쪽으로 비껴 앉음", "오른 우세": "오른발 차기, 오른손 흔들기"},
                ops=dict(LR=("swap", {"왼 우세": "오른 우세", "오른 우세": "왼 우세"}), UD="same")),
-    "UD": dict(group="비대칭", name="상하", q="머리가 위인가 아래인가?",
-               values=["정립", "수평", "도립"], neutral="정립",
-               anchors={"정립": "서기·앉기", "수평": "눕기", "도립": "물구나무·거꾸로 매달림"},
-               ops=dict(LR="same", UD=("swap", {"정립": "도립", "도립": "정립"}))),
-    # ---------------- 4~8. 몸의 부위 모양
-    "TRK": dict(group="형태", name="몸통", q="몸통은 어떤 모양인가?",
-                values=["곧음", "젖힘", "숙임", "말림", "옆굽힘", "비틂"], neutral="곧음",
-                anchors={"곧음": "단정히 앉음", "젖힘": "등받이에 기대 뒤로", "숙임": "허리를 앞으로", "말림": "등이 둥글게 굽음",
-                         "옆굽힘": "한쪽 옆구리를 접음", "비틂": "상체와 하체가 다른 쪽을 향함(허리를 돌림)"},
-                ops=dict(LR="same", UD="same")),
-    "ARM": dict(group="형태", name="팔", q="팔은 어디로 향하나? (세계 기준: 위=하늘. 왼팔·오른팔 따로 가능)",
-                values=["내림", "모음", "앞으로 뻗음", "옆으로 뻗음", "위로 뻗음", "뒤로", "굽혀 올림", "얼굴에 댐"], neutral="내림", sided=True,
-                anchors={"내림": "차렷", "모음": "몸 앞·무릎 위·허리에 붙임, 팔짱", "앞으로 뻗음": "앞으로 나란히", "옆으로 뻗음": "T자",
-                         "위로 뻗음": "만세", "뒤로": "뒷짐", "굽혀 올림": "팔꿈치를 굽혀 손을 어깨~머리 높이로(손 흔들기, 경례)",
-                         "얼굴에 댐": "턱 괴기, 얼굴 가리기, 머리 만지기"},
-                ops=dict(LR="same", UD=("swap", {"위로 뻗음": "내림", "내림": "위로 뻗음"}))),
-    "LEG": dict(group="형태", name="다리", q="다리는 어떤 모양인가? (왼다리·오른다리 따로 가능)",
-                values=["폄", "벌려 폄", "굽힘", "벌려 굽힘", "깊이 접음", "교차·겹침", "들어 폄", "들어 접음"], neutral="폄", sided=True,
-                anchors={"폄": "곧게 선 다리, 모아 편 다리", "벌려 폄": "다리를 옆으로 벌려 폄", "굽힘": "무릎이 약간~직각(겨루기 서기, 의자에 앉은 무릎)",
-                         "벌려 굽힘": "무릎을 굽히고 벌림(기마 서기, 다리 벌려 앉기)", "깊이 접음": "쪼그림, 꿇음", "교차·겹침": "발목 교차, 무릎 위에 무릎",
-                         "들어 폄": "다리를 들어 폄(차기 충격)", "들어 접음": "무릎을 들어 접음(차기 준비, 무릎 올리기)"},
-                ops=dict(LR="same", UD="same")),
-    "HED": dict(group="형태", name="머리·시선", q="머리와 시선은 어디를 향하나?",
-                values=["정면", "위", "아래", "옆", "기울임"], neutral="정면",
-                anchors={"정면": "앞을 봄", "위": "하늘을 봄", "아래": "고개 숙임", "옆": "돌아봄", "기울임": "고개를 갸웃"},
-                ops=dict(LR="same", UD=("swap", {"위": "아래", "아래": "위"}))),
-    "FACE": dict(group="형태", name="표정", q="얼굴은 어떤 표정인가?",
-                 values=["무표정", "미소", "웃음", "화남", "슬픔", "놀람", "윙크", "눈 감음"], neutral="무표정", sided=True,
-                 anchors={"무표정": "힘 뺀 얼굴", "미소": "입꼬리만 올림", "웃음": "입을 벌려 웃음", "화남": "눈썹을 모으고 노려봄",
-                          "슬픔": "눈꼬리·입꼬리를 내림", "놀람": "눈과 입을 크게", "윙크": "한쪽 눈만 감음(@로 어느 쪽인지)", "눈 감음": "두 눈 감음"},
-                 ops=dict(LR="same", UD="same")),
-    # ---------------- 9~10. 스타일 (사람이 평가하는 지각 라벨)
-    "GND": dict(group="스타일", name="남녀", q="이 자세·동작이 어느 쪽으로 읽히나? (인물의 성별이 아님)",
-                values=["여성적", "중립", "남성적"], neutral="중립", rated=True,
-                anchors={"여성적": "무릎을 모으고 다리를 기울여 앉기", "중립": "차렷", "남성적": "다리를 벌리고 젖혀 앉기"},
-                ops=dict(LR="same", UD="same")),
-    "AGE": dict(group="스타일", name="노소", q="이 자세·동작이 몇 살쯤으로 읽히나? (실제 나이가 아님)",
-                values=["아이", "청년", "중년", "노년"], neutral="청년", rated=True,
-                anchors={"아이": "깡충거림, 몸 전체를 크게 씀", "청년": "중립", "중년": "무게 있게 서고 앉음", "노년": "천천히, 발 벌림, 몸을 아낌"},
-                ops=dict(LR="same", UD="same")),
+    "상하": dict(q="몸이 세상에 대해 어떻게 놓였나? (어느 쪽이 위/아래인가)",
+               values=["정립", "도립", "등 아래", "배 아래", "왼옆 아래", "오른옆 아래"], neutral="정립",
+               anchors={"정립": "머리가 위(서기·앉기)", "도립": "머리가 아래(물구나무)", "등 아래": "반듯이 누움",
+                        "배 아래": "엎드림, 엎드려뻗쳐", "왼옆 아래": "왼쪽으로 모로 누움", "오른옆 아래": "오른쪽으로 모로 누움"},
+               ops=dict(LR=("swap", {"왼옆 아래": "오른옆 아래", "오른옆 아래": "왼옆 아래"}),
+                        UD=("swap", {"정립": "도립", "도립": "정립", "등 아래": "배 아래", "배 아래": "등 아래",
+                                     "왼옆 아래": "오른옆 아래", "오른옆 아래": "왼옆 아래"}))),
+    "열림": dict(q="몸 전체가 모여 있나, 펼쳐져 있나?",
+               values=["닫힘", "중립", "열림"], neutral="중립",
+               anchors={"닫힘": "무릎·팔을 모은 단정한 앉기, 웅크림", "중립": "편하게 선 자세", "열림": "다리를 벌려 앉기, 만세"},
+               ops=dict(LR="same", UD="same")),
+    "남녀": dict(q="이 자세가 어느 쪽으로 읽히나? (인물의 성별이 아님)", values=["여성적", "중립", "남성적"], neutral="중립", rated=True,
+               anchors={"여성적": "무릎을 모으고 다리를 기울여 앉기", "중립": "차렷", "남성적": "다리를 벌리고 젖혀 앉기"},
+               ops=dict(LR="same", UD="same")),
+    "노소": dict(q="이 자세가 몇 살쯤으로 읽히나? (실제 나이가 아님)", values=["아이", "청년", "중년", "노년"], neutral="청년", rated=True,
+               anchors={"아이": "몸 전체를 크게 씀", "청년": "중립", "중년": "무게 있게 서고 앉음", "노년": "등이 굽고 무릎을 약간 굽힘"},
+               ops=dict(LR="same", UD="same")),
 }
-CORE = list(AXES)
 
-# 10축 밖의 확장 축. 필요할 때만 붙인다 (손 모양은 주먹/펴짐을 가르는 태권도 등에서, 접촉·긴장은 장면 맥락에서).
-EXT = {
-    "HND": dict(group="확장", name="손 모양", q="손은 어떤 모양인가?",
-                values=["자연", "펴짐", "주먹", "가리킴", "기호"], neutral="자연", sided=True,
-                anchors={"자연": "힘 뺀 손", "펴짐": "손바닥을 펴 보임", "주먹": "꽉 쥠", "가리킴": "검지로 가리킴", "기호": "브이, OK 등"},
-                ops=dict(LR="same", UD="same")),
-    "CON": dict(group="확장", name="접촉", q="몸이 무엇과 닿아 있나? (자기 접촉은 팔 축으로 표현)",
-                values=["없음", "물체·바닥", "타인"], neutral="없음",
-                anchors={"없음": "만세", "물체·바닥": "의자·벽·바닥에 닿음", "타인": "포옹, 부축"},
-                ops=dict(LR="same", UD="same")),
-    "TEN": dict(group="확장", name="긴장–이완", q="몸에 힘이 들어가 있나?",
-                values=["이완", "보통", "긴장"], neutral="보통", rated=True,
-                anchors={"이완": "축 처진 앉기", "긴장": "차렷, 겨루기 직전"},
-                ops=dict(LR="same", UD="same")),
+# ----------------------------------------------------------------------------- part axes (one rule for every part)
+PART_AXES = {
+    "향함": dict(q="부위의 뿌리에서 끝을 보면 어느 쪽인가? (어깨→손, 고관절→발, 골반→목, 손목→손끝, 머리는 얼굴이 보는 쪽)",
+               values=["위", "아래", "앞", "뒤", "왼쪽", "오른쪽"], combo=3, relative=True),
+    "굽힘": dict(q="부위 가운데 마디가 얼마나 접혔나? (팔꿈치, 무릎, 등, 손가락)", values=["폄", "굽힘", "접음"], neutral="폄"),
+    "비틂": dict(q="부위가 길이 방향으로 돌았나? (몸통 비틂, 머리 갸웃, 팔·다리 안/바깥 돌림)", values=["없음", "왼쪽", "오른쪽"],
+               neutral="없음", relative=True),
+    "닿음": dict(q="부위가 무엇에 닿아 있나?", values=["없음", "머리", "몸통", "팔", "손", "다리", "바닥", "물체", "타인"], combo=2,
+               neutral="없음"),
 }
-ALL = {**AXES, **EXT}
+OPPOSITE = {"위": "아래", "아래": "위", "앞": "뒤", "뒤": "앞", "왼쪽": "오른쪽", "오른쪽": "왼쪽"}
+
+PARTS = {
+    "몸통": dict(side=None, meaning={"향함": "위=곧음, 위+앞=숙임, 위+뒤=젖힘, 위+왼쪽=왼 옆굽힘", "굽힘": "등이 둥글게 말림",
+                                   "비틂": "가슴이 돌아간 쪽"}),
+    "머리": dict(side=None, skip=["굽힘"], meaning={"향함": "얼굴·시선이 향하는 쪽", "비틂": "고개를 갸웃한 쪽"}),
+    "왼팔": dict(side="왼"), "오른팔": dict(side="오른"),
+    "왼손": dict(side="왼", extra={"굽힘": ["가리킴", "기호"]}, meaning={"굽힘": "폄=펴짐, 굽힘=반쯤 쥠, 접음=주먹"}),
+    "오른손": dict(side="오른", extra={"굽힘": ["가리킴", "기호"]}, meaning={"굽힘": "폄=펴짐, 굽힘=반쯤 쥠, 접음=주먹"}),
+    "왼다리": dict(side="왼"), "오른다리": dict(side="오른"),
+}
+GROUPS = {"팔": ("왼팔", "오른팔"), "손": ("왼손", "오른손"), "다리": ("왼다리", "오른다리")}
+MIRROR = {"왼팔": "오른팔", "오른팔": "왼팔", "왼손": "오른손", "오른손": "왼손", "왼다리": "오른다리", "오른다리": "왼다리"}
 OPS = ("LR", "UD")
 
-# 전이 축: 자세에서 자세로 가는 방식 (동작 = 자세의 시퀀스 + 이 축). 10축에는 포함하지 않는다.
+# 동작 = 자세 라벨의 시퀀스 + 전이 축. 자세 축 수에는 넣지 않는다.
 TRANS = {
-    "REP": dict(name="반복", q="같은 변화가 되풀이되나?", values=["한 번", "반복", "지속"]),
-    "OSC": dict(name="진동 방향", q="반복된다면 어느 방향으로 흔들리나?", values=["없음", "좌우", "상하", "앞뒤", "회전"]),
-    "SPD": dict(name="속도", q="얼마나 빠른가?", values=["느림", "보통", "빠름", "폭발적"]),
-    "DUR": dict(name="지속", q="그 상태가 얼마나 유지되나?", values=["순간", "짧음", "유지"]),
+    "반복": ["한 번", "반복", "지속"],
+    "진동 방향": ["없음", "좌우", "상하", "앞뒤", "회전"],
+    "속도": ["느림", "보통", "빠름", "폭발적"],
+    "지속": ["순간", "짧음", "유지"],
 }
 
-# 스타일 축이 말하지 않은 몸 축을 채우는 사전값. 문헌(열림/닫힘 앉기, 어깨·엉덩이 흔들림, 노화 보행)에서 가져온 가설이며
-# 몸 축에 값이 명시되어 있으면 항상 그쪽이 이긴다. 라벨링이 아니라 자세를 만들 때만 쓴다.
+# ----------------------------------------------------------------------------- defaults for pose generation
+# 대분류마다의 기본 모양. 라벨에 없는 칸은 (명시값 > 스타일 사전값 > 이 기본 모양 > 중립값) 순서로 채운다.
+TEMPLATES = {
+    "서기": {"몸통": {"향함": "위"}, "머리": {"향함": "앞"}, "팔": {"향함": "아래"}, "손": {"향함": "아래"},
+           "다리": {"향함": "아래", "닿음": "바닥"}},
+    "앉기": {"몸통": {"향함": "위"}, "머리": {"향함": "앞"}, "팔": {"향함": "앞+아래", "굽힘": "굽힘", "닿음": "다리"},
+           "손": {"향함": "앞"}, "다리": {"향함": "앞+아래", "굽힘": "굽힘", "닿음": "바닥"}},
+    "눕기": {"몸통": {"향함": "위", "닿음": "바닥"}, "머리": {"향함": "앞"}, "팔": {"향함": "아래"}, "손": {"향함": "아래"},
+           "다리": {"향함": "아래"}},
+    "꿇기": {"몸통": {"향함": "위"}, "머리": {"향함": "앞"}, "팔": {"향함": "앞+아래", "굽힘": "굽힘", "닿음": "다리"},
+           "손": {"향함": "앞"}, "다리": {"향함": "아래+뒤", "굽힘": "접음", "닿음": "바닥"}},
+    "쪼그리기": {"몸통": {"향함": "위+앞", "굽힘": "굽힘"}, "머리": {"향함": "앞"}, "팔": {"향함": "앞+아래", "닿음": "다리"},
+             "손": {"향함": "아래"}, "다리": {"향함": "아래", "굽힘": "접음", "닿음": "바닥"}},
+    "기대기": {"몸통": {"향함": "위", "닿음": "물체"}, "머리": {"향함": "앞"}, "팔": {"향함": "아래"}, "손": {"향함": "아래"},
+            "다리": {"향함": "아래+앞", "닿음": "바닥"}},
+    "짚기": {"몸통": {"향함": "위"}, "머리": {"향함": "앞"}, "팔": {"향함": "앞", "닿음": "바닥"}, "손": {"향함": "위"},
+           "다리": {"향함": "아래", "닿음": "바닥"}},
+    "공중": {"몸통": {"향함": "위"}, "머리": {"향함": "앞"}, "팔": {"향함": "아래"}, "손": {"향함": "아래"},
+           "다리": {"향함": "아래", "굽힘": "굽힘"}},
+}
+# 전체 느낌 축이 비어 있는 칸에 주는 사전값 (문헌 기반 가설, 검증 안 함). "+바깥"은 기본 모양의 향함에 바깥을 더한다는 뜻.
 PRIORS = {
-    ("GND", "여성적"): dict(TRK="곧음", ARM="모음", HED="기울임", LEG={"앉기": "굽힘", "꿇기": "깊이 접음", "*": "폄"}),
-    ("GND", "남성적"): dict(TRK={"앉기": "젖힘", "*": "곧음"}, ARM="내림", LEG={"앉기": "벌려 굽힘", "서기": "벌려 폄", "*": "폄"}),
-    ("AGE", "아이"): dict(ARM="옆으로 뻗음", LEG={"서기": "벌려 폄", "*": "굽힘"}),
-    ("AGE", "노년"): dict(TRK="말림", HED="아래", LEG={"서기": "굽힘", "*": "굽힘"}),
+    ("열림", "열림"): {"팔": {"향함": "+바깥"}, "다리": {"향함": "+바깥"}},
+    ("열림", "닫힘"): {"팔": {"닿음": "몸통"}, "다리": {"닿음": "다리"}},
+    ("남녀", "여성적"): {"다리": {"닿음": "다리"}, "몸통": {"향함": "위"}},
+    ("남녀", "남성적"): {"다리": {"향함": "+바깥"}, "몸통": {"향함": {"앉기": "위+뒤"}}},
+    ("노소", "아이"): {"다리": {"향함": {"서기": "+바깥"}}},
+    ("노소", "노년"): {"몸통": {"향함": "위+앞", "굽힘": "굽힘"}, "머리": {"향함": "앞+아래"}, "다리": {"굽힘": {"서기": "굽힘"}}},
 }
 
 
-def bits(axes):
-    return sum(math.log2(len(ALL[a]["values"])) for a in axes)
+# ----------------------------------------------------------------------------- values
+def _part_values(part, axis):
+    return PART_AXES[axis]["values"] + PARTS[part].get("extra", {}).get(axis, [])
 
 
-# ----------------------------------------------------------------------------- sided values
-def parse(v):
-    """'굽힘@왼/폄@오른' -> [('굽힘','왼'), ('폄','오른')];  '굽힘' -> [('굽힘', None)] (both sides)."""
-    out = []
-    for part in str(v).split("/"):
-        base, _, side = part.partition("@")
-        out.append((base, side or None))
-    return out
+def _resolve(part, axis, raw):
+    """'앞+아래+바깥' on 왼다리 -> '아래+앞+왼쪽' (aliases resolved, combo checked, canonical order)."""
+    spec, side = PART_AXES[axis], PARTS[part]["side"]
+    comps = []
+    for c in str(raw).split("+"):
+        if c in ("바깥", "안쪽"):
+            if not (spec.get("relative") and side):
+                raise ValueError(f"{part}.{axis}: '{c}' is only for left/right parts")
+            c = (side if c == "바깥" else {"왼": "오른", "오른": "왼"}[side]) + "쪽"
+        if c not in _part_values(part, axis):
+            raise ValueError(f"{part}.{axis}: {c!r} not in {_part_values(part, axis)}")
+        if c not in comps:
+            comps.append(c)
+    if len(comps) > spec.get("combo", 1):
+        raise ValueError(f"{part}.{axis}={raw!r}: at most {spec.get('combo', 1)} values")
+    if len(comps) > 1 and ("없음" in comps or any(OPPOSITE.get(c) in comps for c in comps)):
+        raise ValueError(f"{part}.{axis}={raw!r}: contradictory combination")
+    order = _part_values(part, axis)
+    return "+".join(sorted(comps, key=order.index))
 
 
-def fmt(parts):
-    """Canonical text: 왼 before 오른, so flipping twice returns the identical string."""
-    parts = sorted(parts, key=lambda p: _NEUTRAL_SIDE_ORDER.get(p[1], -1))
-    return "/".join(b if s is None else f"{b}@{s}" for b, s in parts)
-
-
-def flip(label: dict, op: str) -> dict:
-    """Apply a symmetry operation. LR swaps every 왼/오른; UD swaps the values each axis lists for it."""
-    out = {}
-    for k, v in label.items():
-        if v in (None, "*"):
-            out[k] = v
-            continue
-        rule = ALL[k]["ops"][op]
-        parts = []
-        for base, side in parse(v):
-            if op == "LR" and side is not None:
-                side = SW_SIDE[side]
-            if rule != "same":
-                base = rule[1].get(base, base)
-            parts.append((base, side))
-        out[k] = fmt(parts)
+def expand(label: dict) -> dict:
+    """Short label -> canonical form: whole-body values + {part: {axis: value}}. Groups (팔/손/다리) fill both sides,
+    a named side overrides the group per axis."""
+    out = {k: v for k, v in label.items() if k in GLOBAL}
+    for k, v in out.items():
+        if v != "*" and v not in GLOBAL[k]["values"]:
+            raise ValueError(f"{k}={v!r} not in {GLOBAL[k]['values']}")
+    parts = {}
+    for key in [k for k in label if k in GROUPS] + [k for k in label if k in PARTS]:
+        for part in GROUPS.get(key, (key,)):
+            for axis, raw in label[key].items():
+                if axis not in PART_AXES or axis in PARTS[part].get("skip", []):
+                    raise ValueError(f"{part} has no axis {axis!r}")
+                parts.setdefault(part, {})[axis] = _resolve(part, axis, raw)
+    unknown = set(label) - set(GLOBAL) - set(GROUPS) - set(PARTS)
+    if unknown:
+        raise KeyError(unknown)
+    out["부위"] = {p: parts[p] for p in PARTS if p in parts}
     return out
 
 
 def validate(label: dict):
-    for k, v in label.items():
-        if k not in ALL:
-            raise KeyError(k)
-        if v == "*":
+    expand(label)
+
+
+def _swap_lr(value):
+    return "+".join({"왼쪽": "오른쪽", "오른쪽": "왼쪽"}.get(c, c) for c in value.split("+"))
+
+
+def flip(label: dict, op: str) -> dict:
+    """Symmetry operation on a label (returns canonical form). LR swaps left/right parts and every 왼쪽/오른쪽 value;
+    UD only changes how the body sits in the world (상하, 대분류), because part directions are in the body frame."""
+    e = expand(label) if "부위" not in label else label
+    out = {}
+    for k, v in e.items():
+        if k == "부위":
             continue
-        parts = parse(v)
-        for base, side in parts:
-            if base not in ALL[k]["values"]:
-                raise ValueError(f"{k}={v!r}: {base!r} not in {ALL[k]['values']}")
-            if side is not None and (not ALL[k].get("sided") or side not in SIDES):
-                raise ValueError(f"{k} does not take side modifier {side!r}")
-        if len(parts) > 2 or (len(parts) == 2 and (not ALL[k].get("sided") or {s for _, s in parts} != set(SIDES))):
-            raise ValueError(f"{k}={v!r}: a pair needs one 왼 and one 오른 part on a sided axis")
-        if k not in ("FACE",) and fmt(parts) != v:
-            raise ValueError(f"{k}={v!r}: write pairs in canonical order {fmt(parts)!r}")
+        rule = GLOBAL[k]["ops"][op]
+        out[k] = v if rule == "same" or v == "*" else rule[1].get(v, v)
+    parts = {}
+    for p, axes in e["부위"].items():
+        q = MIRROR.get(p, p) if op == "LR" else p
+        parts[q] = {a: (_resolve(q, a, _swap_lr(v)) if op == "LR" else v) for a, v in axes.items()}
+    out["부위"] = {p: parts[p] for p in PARTS if p in parts}
+    return out
+
+
+def symmetric(label: dict) -> bool:
+    """Is the pose its own mirror image? (the 좌우 value itself is ignored)"""
+    e = expand(label) if "부위" not in label else label
+    f = flip(e, "LR")
+    return {k: v for k, v in f.items() if k != "좌우"} == {k: v for k, v in e.items() if k != "좌우"}
 
 
 def check(label: dict):
     """Soft consistency warnings between axes (the label is still usable)."""
+    e = expand(label) if "부위" not in label else label
     w = []
-    sided = any(s for k, v in label.items() if v not in (None, "*") for _, s in parse(v))
-    if sided and label.get("LR") == "대칭":
-        w.append("한쪽만 지정한 값(@왼/@오른)이 있는데 좌우가 '대칭'")
-    if label.get("BASE") == "눕기" and label.get("UD") not in (None, "*", "수평"):
-        w.append("눕기인데 상하가 '수평'이 아님")
-    if label.get("UD") == "도립" and label.get("BASE") not in (None, "*", "짚기", "공중"):
+    if e.get("좌우") == "대칭" and not symmetric(e):
+        w.append("부위 값이 좌우로 다른데 좌우가 '대칭'")
+    if e.get("좌우") in ("왼 우세", "오른 우세") and symmetric(e) and e["부위"]:
+        w.append("부위 값이 좌우로 같은데 좌우가 우세로 적힘 (쏠림만 있는 자세면 무시)")
+    lying = ("등 아래", "배 아래", "왼옆 아래", "오른옆 아래")
+    if e.get("대분류") == "눕기" and e.get("상하") not in (None, "*") + lying:
+        w.append("눕기인데 상하가 누운 방향이 아님")
+    if e.get("상하") == "도립" and e.get("대분류") not in (None, "*", "짚기", "공중"):
         w.append("도립인데 대분류가 짚기·공중이 아님")
     return w
 
 
 def fill(label: dict) -> dict:
-    """Complete a label for pose generation: explicit body axes win, then style priors, then neutral values."""
-    out = dict(label)
-    base = out.get("BASE", "서기")
-    for style in ("GND", "AGE"):
-        for k, v in PRIORS.get((style, label.get(style)), {}).items():
-            if out.get(k) in (None, "*"):
-                out[k] = v.get(base, v["*"]) if isinstance(v, dict) else v
-    for k, a in AXES.items():
-        if out.get(k) in (None, "*") and not a.get("rated"):
-            out[k] = a["neutral"]
+    """Complete every slot for pose generation: explicit > whole-body priors > 대분류 template > neutral."""
+    e = expand(label)
+    base = e.get("대분류", "서기")
+    if base == "*":
+        base = "서기"
+    filled = {p: dict(a) for p, a in e["부위"].items()}
+
+    def put(key, axis, val, from_prior):
+        for part in GROUPS.get(key, (key,)):
+            if axis in PARTS[part].get("skip", []) or axis in filled.get(part, {}):
+                continue
+            if isinstance(val, dict):
+                val2 = val.get(base)
+                if val2 is None:
+                    continue
+            else:
+                val2 = val
+            if val2.startswith("+"):
+                t = TEMPLATES[base].get(key, {}).get(axis) or TEMPLATES[base].get(_group_of(part), {}).get(axis)
+                val2 = (t + val2) if t else val2[1:]
+            try:
+                filled.setdefault(part, {})[axis] = _resolve(part, axis, val2)
+            except ValueError:
+                if not from_prior:
+                    raise
+
+    for gk in ("열림", "남녀", "노소"):
+        for key, axes in PRIORS.get((gk, e.get(gk)), {}).items():
+            for axis, val in axes.items():
+                put(key, axis, val, True)
+    for key, axes in TEMPLATES[base].items():
+        for axis, val in axes.items():
+            put(key, axis, val, False)
+    for part in PARTS:
+        for axis, spec in PART_AXES.items():
+            if "neutral" in spec and axis not in PARTS[part].get("skip", []):
+                filled.setdefault(part, {}).setdefault(axis, spec["neutral"])
+    out = {k: e.get(k, GLOBAL[k]["neutral"] if not GLOBAL[k].get("rated") else "*") for k in GLOBAL}
+    out["부위"] = {p: {a: filled[p][a] for a in PART_AXES if a in filled[p]} for p in PARTS if p in filled}
     return out
 
 
-def code(label: dict, axes=None) -> str:
-    axes = axes or CORE
-    return " / ".join(f"{ALL[a]['name']}:{label.get(a, '*')}" for a in axes)
+def _group_of(part):
+    return next((g for g, ps in GROUPS.items() if part in ps), part)
+
+
+def code(label: dict) -> str:
+    e = expand(label) if "부위" not in label else label
+    head = " / ".join(f"{k}:{e.get(k, '*')}" for k in GLOBAL)
+    body = "; ".join(f"{p} " + ", ".join(f"{a} {v}" for a, v in ax.items()) for p, ax in e["부위"].items())
+    return head + ("\n    " + body if body else "")
+
+
+def bits():
+    def n(axis):
+        spec = PART_AXES[axis]
+        vals = [v for v in spec["values"] if v != "없음"]
+        k = spec.get("combo", 1)
+        good = [c for r in range(1, k + 1) for c in combinations(vals, r) if not any(OPPOSITE.get(x) in c for x in c)]
+        return len(good) + (1 if "없음" in spec["values"] else 0)
+    g = sum(math.log2(len(a["values"])) for a in GLOBAL.values())
+    per_part = {a: math.log2(n(a)) for a in PART_AXES}
+    parts = sum(sum(v for a, v in per_part.items() if a not in PARTS[p].get("skip", [])) for p in PARTS)
+    return dict(whole_body=g, per_part_axis=per_part, all_parts=parts, total=g + parts)
 
 
 def export(path):
-    out = {"version": "0.3", "operations": {"LR": "좌우 반전", "UD": "상하 반전"}, "core": CORE, "extensions": list(EXT),
-           "transitions": TRANS, "priors": {f"{k[0]}={k[1]}": v for k, v in PRIORS.items()},
-           "bits": {"core": round(bits(CORE), 1), "core+ext": round(bits(list(ALL)), 1)}, "axes": ALL}
+    b = bits()
+    out = {"version": "0.4", "operations": {"LR": "좌우 반전", "UD": "상하 반전"},
+           "nominal_axes": {"전체": list(GLOBAL), "부위 공통": list(PART_AXES)}, "parts": PARTS, "groups": GROUPS,
+           "whole_body": GLOBAL, "part_axes": PART_AXES, "templates": TEMPLATES,
+           "priors": {f"{k[0]}={k[1]}": v for k, v in PRIORS.items()}, "transitions": TRANS,
+           "bits": {"whole_body": round(b["whole_body"], 1), "all_parts": round(b["all_parts"], 1)}}
     json.dump(out, open(path, "w"), ensure_ascii=False, indent=1)
 
 
-# ----------------------------------------------------------------------------- examples
+# ----------------------------------------------------------------------------- examples (short form)
 EXAMPLES = {
-    "만세": dict(BASE="서기", LR="대칭", UD="정립", TRK="곧음", ARM="위로 뻗음", LEG="폄", HED="위", FACE="웃음", GND="*", AGE="*"),
-    "단정하게 모아 앉기 (다리를 왼쪽으로 비껴)": dict(BASE="앉기", LR="왼 우세", UD="정립", TRK="곧음", ARM="모음", LEG="굽힘", HED="기울임", FACE="미소",
-                                      GND="여성적", AGE="*"),
-    "다리 벌려 젖혀 앉기": dict(BASE="앉기", LR="대칭", UD="정립", TRK="젖힘", ARM="내림", LEG="벌려 굽힘", HED="정면", FACE="무표정", GND="남성적", AGE="*"),
-    "다리 꼬고 앉기 (오른다리가 위)": dict(BASE="앉기", LR="오른 우세", UD="정립", TRK="곧음", ARM="모음", LEG="굽힘@왼/교차·겹침@오른", HED="정면", FACE="무표정",
-                                 GND="*", AGE="*"),
-    "한쪽 무릎 세워 앉기 (오른 무릎)": dict(BASE="앉기", LR="오른 우세", UD="정립", TRK="말림", ARM="모음", LEG="깊이 접음@왼/굽힘@오른", HED="아래", FACE="무표정",
-                                  GND="*", AGE="*"),
-    "오른발 돌려차기, 충격 순간": dict(BASE="서기", LR="오른 우세", UD="정립", TRK="옆굽힘", ARM="옆으로 뻗음", LEG="폄@왼/들어 폄@오른", HED="정면", FACE="화남",
-                             GND="*", AGE="*"),
-    "오른발 돌려차기, 무릎 접은 순간": dict(BASE="서기", LR="오른 우세", UD="정립", TRK="비틂", ARM="모음", LEG="폄@왼/들어 접음@오른", HED="정면", FACE="화남",
-                              GND="*", AGE="*"),
-    "앞서기 아래막기 (왼발 앞)": dict(BASE="서기", LR="왼 우세", UD="정립", TRK="곧음", ARM="앞으로 뻗음@왼/모음@오른", LEG="굽힘@왼/폄@오른", HED="정면",
-                           FACE="무표정", GND="*", AGE="*", HND="주먹"),
-    "손 흔들기 (오른손)": dict(BASE="서기", LR="오른 우세", UD="정립", TRK="곧음", ARM="굽혀 올림@오른", LEG="폄", HED="정면", FACE="미소", GND="*", AGE="*",
-                         HND="펴짐@오른"),
-    "윙크 (왼눈)": dict(BASE="서기", LR="왼 우세", UD="정립", TRK="곧음", ARM="내림", LEG="폄", HED="기울임", FACE="윙크@왼", GND="*", AGE="*"),
-    "물구나무서기": dict(BASE="짚기", LR="대칭", UD="도립", TRK="곧음", ARM="내림", LEG="폄", HED="아래", FACE="무표정", GND="*", AGE="*"),
+    "만세": {"대분류": "서기", "좌우": "대칭", "상하": "정립", "열림": "열림",
+           "팔": {"향함": "위", "굽힘": "폄"}, "머리": {"향함": "위+앞"}},
+    "단정하게 비껴 앉기 (다리를 왼쪽으로)": {"대분류": "앉기", "좌우": "왼 우세", "상하": "정립", "열림": "닫힘", "남녀": "여성적",
+                                "다리": {"향함": "아래+앞+왼쪽", "굽힘": "굽힘", "닿음": "다리"},
+                                "팔": {"향함": "아래+앞", "굽힘": "굽힘", "닿음": "다리"}, "머리": {"비틂": "왼쪽"}},
+    "다리 벌려 젖혀 앉기": {"대분류": "앉기", "좌우": "대칭", "상하": "정립", "열림": "열림", "남녀": "남성적",
+                     "몸통": {"향함": "위+뒤", "닿음": "물체"}, "다리": {"향함": "아래+앞+바깥", "굽힘": "굽힘", "닿음": "바닥"},
+                     "팔": {"향함": "아래", "닿음": "다리"}},
+    "다리 꼬고 앉기 (오른다리가 위)": {"대분류": "앉기", "좌우": "오른 우세", "상하": "정립", "열림": "닫힘",
+                             "다리": {"향함": "아래+앞", "굽힘": "굽힘"}, "왼다리": {"닿음": "바닥"},
+                             "오른다리": {"향함": "앞+안쪽", "닿음": "다리"},
+                             "팔": {"향함": "아래+앞", "굽힘": "굽힘", "닿음": "다리"}},
+    "바닥에 한쪽 무릎 세워 앉기 (오른 무릎)": {"대분류": "앉기", "좌우": "오른 우세", "상하": "정립", "열림": "닫힘",
+                                  "몸통": {"굽힘": "굽힘"}, "머리": {"향함": "앞+아래"},
+                                  "왼다리": {"향함": "앞+안쪽", "굽힘": "접음", "닿음": "바닥"},
+                                  "오른다리": {"향함": "앞+아래", "굽힘": "접음", "닿음": "바닥"},
+                                  "오른팔": {"향함": "앞+아래", "닿음": "다리"}},
+    "오른발 돌려차기, 무릎 접은 순간": {"대분류": "서기", "좌우": "오른 우세", "상하": "정립", "열림": "닫힘",
+                              "몸통": {"비틂": "왼쪽"}, "팔": {"향함": "앞+아래", "굽힘": "접음"}, "손": {"굽힘": "접음"},
+                              "왼다리": {"향함": "아래", "닿음": "바닥"}, "오른다리": {"향함": "앞+바깥", "굽힘": "접음"}},
+    "오른발 돌려차기, 충격 순간": {"대분류": "서기", "좌우": "오른 우세", "상하": "정립", "열림": "열림",
+                            "몸통": {"향함": "위+왼쪽", "비틂": "왼쪽"}, "팔": {"향함": "아래+바깥"}, "손": {"굽힘": "접음"},
+                            "왼다리": {"향함": "아래", "닿음": "바닥"}, "오른다리": {"향함": "바깥", "굽힘": "폄"}},
+    "앞서기 아래막기 (왼발 앞)": {"대분류": "서기", "좌우": "왼 우세", "상하": "정립",
+                           "왼다리": {"향함": "아래+앞", "굽힘": "굽힘", "닿음": "바닥"},
+                           "오른다리": {"향함": "아래+뒤", "굽힘": "폄", "닿음": "바닥"},
+                           "왼팔": {"향함": "아래+앞", "굽힘": "폄"}, "오른팔": {"향함": "아래", "굽힘": "접음", "닿음": "몸통"},
+                           "손": {"굽힘": "접음"}},
+    "손 흔들기 (오른손)": {"대분류": "서기", "좌우": "오른 우세", "상하": "정립",
+                     "오른팔": {"향함": "위+바깥", "굽힘": "접음"}, "오른손": {"향함": "위", "굽힘": "폄"}},
+    "물구나무서기": {"대분류": "짚기", "좌우": "대칭", "상하": "도립",
+               "팔": {"향함": "위", "굽힘": "폄", "닿음": "바닥"}, "다리": {"향함": "아래", "굽힘": "폄", "닿음": "없음"}},
+    "반듯이 누워 쉬기": {"대분류": "눕기", "좌우": "대칭", "상하": "등 아래", "열림": "중립",
+                  "몸통": {"닿음": "바닥"}, "팔": {"향함": "아래+바깥", "닿음": "바닥"}},
+    "오른쪽으로 모로 누워 다리 접기": {"대분류": "눕기", "좌우": "오른 우세", "상하": "오른옆 아래", "열림": "닫힘",
+                           "몸통": {"굽힘": "굽힘", "닿음": "바닥"}, "다리": {"향함": "아래+앞", "굽힘": "굽힘", "닿음": "다리"},
+                           "팔": {"향함": "앞", "굽힘": "굽힘"}},
 }
-EXAMPLES["오른손으로 흔들며 왼눈 윙크"] = dict(EXAMPLES["손 흔들기 (오른손)"], FACE="윙크@왼", HED="기울임")
-EXAMPLE_TRANS = {
-    "손 흔들기 (오른손)": dict(REP="반복", OSC="좌우", SPD="보통", DUR="유지"),
-    "윙크 (왼눈)": dict(REP="한 번", OSC="없음", SPD="빠름", DUR="순간"),
-    "오른손으로 흔들며 왼눈 윙크": dict(REP="반복", OSC="좌우", SPD="보통", DUR="유지"),
-}
+EXAMPLE_TRANS = {"손 흔들기 (오른손)": {"반복": "반복", "진동 방향": "좌우", "속도": "보통", "지속": "유지"}}
 
 
 if __name__ == "__main__":
-    print(f"핵심 {len(CORE)}축 {bits(CORE):.1f} bit (대칭일 때), 확장 포함 {bits(list(ALL)):.1f} bit")
+    b = bits()
+    print(f"명목 축: 전체 {len(GLOBAL)} + 부위 공통 {len(PART_AXES)} = {len(GLOBAL) + len(PART_AXES)}  |  "
+          f"실사용 칸: {len(GLOBAL)} + {sum(len(PART_AXES) - len(p.get('skip', [])) for p in PARTS.values())}")
+    print(f"비트: 전체 {b['whole_body']:.1f} + 부위 {b['all_parts']:.1f} = {b['total']:.1f}  "
+          f"(부위 1개당 " + ", ".join(f"{a} {v:.1f}" for a, v in b["per_part_axis"].items()) + ")")
     seen = {}
     for name, L in EXAMPLES.items():
-        validate(L)
-        assert not check(L), (name, check(L))
-        if name in EXAMPLE_TRANS:
-            for k, v in EXAMPLE_TRANS[name].items():
-                assert v in TRANS[k]["values"], (name, k, v)
+        e = expand(L)
+        assert not check(e), (name, check(e))
         for op in OPS:
-            assert flip(flip(L, op), op) == L, (name, op)          # flipping twice restores the label
-        assert flip(flip(L, "LR"), "UD") == flip(flip(L, "UD"), "LR"), name   # the two operations commute
-        key = tuple(sorted(L.items()))
-        assert key not in seen, (name, seen.get(key))                 # every example is distinguishable
+            assert flip(flip(e, op), op) == e, (name, op)                      # flipping twice restores the label
+        assert flip(flip(e, "LR"), "UD") == flip(flip(e, "UD"), "LR"), name    # the two flips commute
+        key = json.dumps(e, ensure_ascii=False, sort_keys=True)
+        assert key not in seen, (name, seen.get(key))                          # examples are distinguishable
         seen[key] = name
-        lr = flip(L, "LR")
-        print(f"\n{name}\n  {code(L)}\n  좌우 반전 → " + (", ".join(f"{ALL[k]['name']} {L[k]}→{lr[k]}" for k in L if lr[k] != L[k]) or "없음 (대칭)"))
-    ud = flip(EXAMPLES["만세"], "UD")
-    print("\n상하 반전 예) 만세 →", {k: v for k, v in ud.items() if v != EXAMPLES["만세"][k]})
-    print("\n채우기 예) 여성적 앉기 →", code(fill(dict(BASE="앉기", GND="여성적"))))
-    print("채우기 예) 남성적 앉기 →", code(fill(dict(BASE="앉기", GND="남성적"))))
+        f = fill(L)
+        assert flip(flip(f, "LR"), "LR") == f, name
+        print(f"\n{name}\n  {code(e)}")
+        if not symmetric(e):
+            print(f"  좌우 반전 → {code(flip(e, 'LR'))}")
+    for name in EXAMPLE_TRANS:
+        for k, v in EXAMPLE_TRANS[name].items():
+            assert v in TRANS[k], (name, k, v)
+    print("\n상하 반전 예) 만세 →", code(flip(EXAMPLES["만세"], "UD")))
+    print("\n채우기 예) 앉기 + 여성적 →", code(fill({"대분류": "앉기", "남녀": "여성적"})))
+    print("채우기 예) 앉기 + 남성적 →", code(fill({"대분류": "앉기", "남녀": "남성적"})))
+    print("채우기 예) 서기 + 노년 →", code(fill({"대분류": "서기", "노소": "노년"})))

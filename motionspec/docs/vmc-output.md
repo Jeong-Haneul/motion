@@ -19,19 +19,18 @@
 
 ## 2. 라벨 축이 기록에 어떻게 대응하나
 
-**10축과 확장 축의 값이 VMC 스트림의 어디에 나타나는지**만 보여 준다. 스트림에 안 나타나는 축도 **라벨로 그대로 남는다**(클립에 붙는 라벨).
+**전체 축과 파츠 축의 값이 VMC 스트림의 어디에 나타나는지**만 보여 준다. 스트림에 안 나타나는 축도 **라벨로 그대로 남는다**(클립에 붙는 라벨). 표정은 이 라벨 체계 밖이다(VMC에서는 `Blend/Val`).
 
-| 라벨 축 | 기록되는 곳 |
+| 라벨 | 기록되는 곳 |
 |---|---|
-| 대분류, 상하, 몸통 | `Bone/Pos` 회전(Hips·Spine·Chest·UpperChest) + `Root/Pos`(높이, 도립·눕기는 루트 회전) |
-| 좌우 | 스트림에 직접 나타나지 않는다. 쪽별 팔·다리 값이 왼/오른 본 회전으로 나타나고, 라벨로 남는다 |
-| 팔(쪽별) | `LeftShoulder/UpperArm/LowerArm/Hand`, `RightShoulder/UpperArm/LowerArm/Hand` |
-| 다리(쪽별) | `LeftUpperLeg/LowerLeg/Foot/Toes`, `RightUpperLeg/LowerLeg/Foot/Toes` |
-| 머리·시선 | `Neck`·`Head`·`LeftEye`·`RightEye` 본 |
-| 표정 | 표정 프리셋: 미소·웃음 → `Joy`(+`A`), 화남 → `Angry`, 슬픔 → `Sorrow`, 놀람 → `A`+`O`, 윙크 → `Blink_L` 또는 `Blink_R`, 눈 감음 → `Blink_L`+`Blink_R` (VRM0 이름) |
-| 남녀, 노소 | 스트림에는 안 나타난다. **라벨로 남고**, 자세를 만들 때 비어 있는 축의 사전값으로 쓰인다 |
-| (확장) 손 모양 | 손가락 본(Thumb·Index·Middle·Ring·Little) |
-| (확장) 접촉, 긴장 | 스트림에는 안 나타난다. 라벨로 남는다 |
+| 대분류, 상하 | `Root/Pos`(높이와 루트 회전: 도립·누운 방향) + 하체 본 |
+| 좌우, 열림, 남녀, 노소 | 스트림에 직접 나타나지 않는다. 파츠 본 회전으로 나타나고, **라벨로 남는다** |
+| 몸통 (향함·굽힘·비틂) | `Hips`·`Spine`·`Chest`·`UpperChest` 회전 |
+| 머리 (향함·비틂) | `Neck`·`Head`(+ `LeftEye`·`RightEye`) |
+| 팔 (향함 → 어깨, 굽힘 → 팔꿈치, 비틂 → 위팔·아래팔 회전) | `Left/RightShoulder`·`UpperArm`·`LowerArm` |
+| 손 (향함·비틂 → 손목, 굽힘 → 손가락) | `Left/RightHand` + 손가락 본(Thumb·Index·Middle·Ring·Little) |
+| 다리 (향함 → 고관절, 굽힘 → 무릎, 비틂 → 다리 회전) | `Left/RightUpperLeg`·`LowerLeg`·`Foot`·`Toes` |
+| 닿음 | 스트림에는 안 나타난다. 라벨로 남고, 자세를 만들 때 끝이 닿을 위치(IK 목표)로 쓰인다 |
 
 - 스트림에는 `앉기`가 의자 없이 앉은 자세로, `짚기`·`기대기`가 바닥·벽 없는 자세로 나타난다. 이 정보는 라벨에 남는다.
 - 라벨과 자세를 한 스트림에 같이 두려면 규격에 있는 **스루(Thru) 메시지** `/VMC/Thru/<이름>/<이름> (string)`을 쓸 수 있다. 수신 쪽이 처리하지 않고 그대로 중계하는 확장용 메시지이다. 별도 파일로 두는 방법도 있다.
