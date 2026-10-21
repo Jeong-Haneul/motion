@@ -58,13 +58,25 @@ AXES = {
                 anchors={"붙임": "차렷, 무릎 모아 앉기", "보통": "어깨~골반 너비", "벌림": "다리를 쩍 벌림, 기마 서기"},
                 ops=dict(LR="same", UD="same", FB="same")),
     "LGR": dict(group="형태", name="다리 관계", q="두 다리가 서로 어떤 관계인가?",
-                values=["나란함", "교차·겹침", "한쪽 들림"], neutral="나란함",
+                values=["나란함", "교차·겹침", "한쪽 들림"], neutral="나란함", sided=True,
                 anchors={"나란함": "두 발이 바닥", "교차·겹침": "발목 교차, 무릎 위에 무릎", "한쪽 들림": "한 발이 바닥에서 떨어짐(차기)"},
                 ops=dict(LR="same", UD="same", FB="same")),
     "ARM": dict(group="형태", name="팔 모양", q="팔은 어디로 향하나?",
-                values=["내림", "모음", "앞으로 뻗음", "옆으로 뻗음", "위로 뻗음", "뒤로"], neutral="내림",
-                anchors={"내림": "차렷", "모음": "무릎 위·가슴 앞에 모음", "앞으로 뻗음": "앞으로 나란히", "옆으로 뻗음": "T자", "위로 뻗음": "만세", "뒤로": "팔짱·뒷짐"},
+                values=["내림", "모음", "앞으로 뻗음", "옆으로 뻗음", "위로 뻗음", "뒤로", "굽혀 올림"], neutral="내림", sided=True,
+                anchors={"내림": "차렷", "모음": "무릎 위·가슴 앞에 모음", "앞으로 뻗음": "앞으로 나란히", "옆으로 뻗음": "T자", "위로 뻗음": "만세", "뒤로": "팔짱·뒷짐", "굽혀 올림": "팔꿈치를 굽혀 손을 어깨~머리 높이로 올림(손 흔들기, 경례)"},
                 ops=dict(LR="same", UD=("swap", {"위로 뻗음": "내림", "내림": "위로 뻗음"}), FB="same")),
+    "HND": dict(group="얼굴·손", name="손 모양", q="손은 어떤 모양인가?",
+                values=["자연", "펴짐", "주먹", "가리킴", "기호"], neutral="자연", sided=True,
+                anchors={"자연": "힘 뺀 손", "펴짐": "손바닥을 펴 보임(인사, 멈춤)", "주먹": "꽉 쥠", "가리킴": "검지로 가리킴", "기호": "브이, OK 등"},
+                ops=dict(LR="same", UD="same", FB="same")),
+    "EYE": dict(group="얼굴·손", name="눈", q="눈은 어떤 상태인가?",
+                values=["뜸", "감음", "한쪽 감음", "가늘게"], neutral="뜸", sided=True,
+                anchors={"뜸": "자연스럽게 뜬 눈", "감음": "두 눈 감음", "한쪽 감음": "윙크", "가늘게": "찡그림·웃는 눈"},
+                ops=dict(LR="same", UD="same", FB="same")),
+    "MTH": dict(group="얼굴·손", name="입", q="입은 어떤 모양인가?",
+                values=["다묾", "미소", "벌림", "오므림"], neutral="다묾",
+                anchors={"다묾": "무표정", "미소": "입꼬리 올림", "벌림": "크게 웃음·놀람", "오므림": "휘파람·뽀뽀"},
+                ops=dict(LR="same", UD="same", FB="same")),
     "HED": dict(group="형태", name="머리·시선", q="머리와 시선은 어디를 향하나?",
                 values=["정면", "위", "아래", "옆", "기울임"], neutral="정면",
                 anchors={"정면": "앞을 봄", "위": "하늘을 봄", "아래": "고개 숙임", "옆": "돌아봄", "기울임": "고개를 갸웃"},
@@ -92,24 +104,51 @@ AXES = {
 TIERS = {
     "필수": ["BASE", "SUP", "LR", "UD", "FB", "OPN"],
     "표준": ["TW", "TRK", "LEG", "LGP", "LGR", "ARM", "HED", "CON"],
+    "얼굴·손": ["HND", "EYE", "MTH"],
     "스타일": ["GND", "AGE"],
     "스타일+": ["TEN"],
 }
 OPS = ("LR", "UD", "FB")
+
+# 전이 축: 자세에서 자세로 가는 방식. 반복되는 동작(손 흔들기)과 순간 동작(윙크)을 구분한다.
+TRANS = {
+    "REP": dict(name="반복", q="같은 변화가 되풀이되나?", values=["한 번", "반복", "지속"]),
+    "OSC": dict(name="진동 방향", q="반복된다면 어느 방향으로 흔들리나?", values=["없음", "좌우", "상하", "앞뒤", "회전"]),
+    "SPD": dict(name="속도", q="얼마나 빠른가?", values=["느림", "보통", "빠름", "폭발적"]),
+    "DUR": dict(name="지속", q="그 상태가 얼마나 유지되나?", values=["순간", "짧음", "유지"]),
+}
 
 
 def bits(axes):
     return sum(math.log2(len(AXES[a]["values"])) for a in axes)
 
 
+SIDES = {"왼": "오른", "오른": "왼", "양쪽": "양쪽"}
+
+
+def split_side(v):
+    """'굽혀 올림@오른' -> ('굽혀 올림', '오른'). Sided axes may name which side performs the value."""
+    if isinstance(v, str) and "@" in v:
+        base, side = v.split("@", 1)
+        return base, side
+    return v, None
+
+
 def flip(label: dict, op: str) -> dict:
-    """Apply a symmetry operation to a label. Axes marked 'manual' are returned as None for re-annotation."""
+    """Apply a symmetry operation to a label. Axes marked 'manual' are returned as None for re-annotation.
+    Side modifiers ('@왼', '@오른') swap under the left-right flip."""
     out = {}
     for k, v in label.items():
         if v in (None, "*"):
             out[k] = v
             continue
+        v, side = split_side(v)
+        if side is not None and op == "LR":
+            side = SIDES[side]
         rule = AXES[k]["ops"][op]
+        if side is not None:
+            out[k] = None if rule == "manual" else ((v if rule == "same" else rule[1].get(v, v)) + "@" + side)
+            continue
         if rule == "same":
             out[k] = v
         elif rule == "manual":
@@ -123,18 +162,21 @@ def validate(label: dict):
     for k, v in label.items():
         if k not in AXES:
             raise KeyError(k)
-        if v not in AXES[k]["values"] and v != "*":
+        base, side = split_side(v)
+        if base not in AXES[k]["values"] and base != "*":
             raise ValueError(f"{k}={v!r} not in {AXES[k]['values']}")
+        if side is not None and (not AXES[k].get("sided") or side not in SIDES):
+            raise ValueError(f"{k} does not take side modifier {side!r}")
 
 
 def code(label: dict, axes=None) -> str:
-    axes = axes or [a for t in ("필수", "표준") for a in TIERS[t]]
+    axes = axes or [a for t in ("필수", "표준", "얼굴·손") for a in TIERS[t] if a in label or t != "얼굴·손"]
     return " / ".join(f"{AXES[a]['name']}:{label.get(a, '*')}" for a in axes)
 
 
 def export(path):
     out = {"version": "0.2", "operations": {"LR": "좌우 반전", "UD": "상하 반전", "FB": "전후 반전"},
-           "tiers": TIERS, "bits": {t: round(bits(a), 1) for t, a in TIERS.items()}, "axes": AXES}
+           "tiers": TIERS, "transitions": TRANS, "bits": {t: round(bits(a), 1) for t, a in TIERS.items()}, "axes": AXES}
     json.dump(out, open(path, "w"), ensure_ascii=False, indent=1)
 
 
@@ -154,6 +196,17 @@ EXAMPLES = {
                               LEG="깊이 접음", LGP="보통", LGR="한쪽 들림", ARM="모음", HED="정면", CON="없음"),
 }
 
+EXAMPLES["손 흔들기 (오른손)"] = dict(BASE="서기", SUP="균등", LR="대칭", UD="정립", FB="정면", TW="일치", OPN="중립", TRK="곧음", LEG="폄", LGP="보통",
+                                  LGR="나란함", ARM="굽혀 올림@오른", HED="정면", CON="없음", HND="펴짐@오른", EYE="뜸", MTH="미소")
+EXAMPLES["윙크 (왼눈)"] = dict(BASE="서기", SUP="균등", LR="대칭", UD="정립", FB="정면", TW="일치", OPN="중립", TRK="곧음", LEG="폄", LGP="보통",
+                            LGR="나란함", ARM="내림", HED="기울임", CON="없음", HND="자연", EYE="한쪽 감음@왼", MTH="미소")
+EXAMPLES["오른손으로 흔들며 왼눈 윙크"] = dict(EXAMPLES["손 흔들기 (오른손)"], EYE="한쪽 감음@왼", HED="기울임")
+EXAMPLE_TRANS = {
+    "손 흔들기 (오른손)": dict(REP="반복", OSC="좌우", SPD="보통", DUR="유지"),
+    "윙크 (왼눈)": dict(REP="한 번", OSC="없음", SPD="빠름", DUR="순간"),
+    "오른손으로 흔들며 왼눈 윙크": dict(REP="반복", OSC="좌우", SPD="보통", DUR="유지"),
+}
+
 
 if __name__ == "__main__":
     for t, a in TIERS.items():
@@ -161,6 +214,9 @@ if __name__ == "__main__":
     bad = 0
     for name, L in EXAMPLES.items():
         validate(L)
+        if name in EXAMPLE_TRANS:
+            for k, v in EXAMPLE_TRANS[name].items():
+                assert v in TRANS[k]["values"], (name, k, v)
         for op in OPS:
             f = flip(L, op)
             assert flip(f, op) == L, (name, op)          # flipping twice restores the label
