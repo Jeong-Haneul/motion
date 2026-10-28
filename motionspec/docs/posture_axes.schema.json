@@ -249,7 +249,7 @@
     "put": "정립",
     "aka": []
    },
-   "두 주먹 얼굴 앞에 모으기": {
+   "두 손 얼굴 앞에 모으기": {
     "side": null,
     "put": "정립",
     "aka": []
@@ -323,6 +323,14 @@
      "머리카락 넘기기"
     ]
    },
+   "두 손 머리에 얹기": {
+    "side": null,
+    "put": "정립",
+    "aka": [
+     "머리 감싸기",
+     "샤워"
+    ]
+   },
    "머리 뒤 깍지": {
     "side": null,
     "put": "정립",
@@ -356,6 +364,13 @@
     "side": "든 손",
     "put": "정립",
     "aka": []
+   },
+   "한 팔 비스듬히 뻗고 얼굴 팔꿈치에 묻기": {
+    "side": "뻗은 팔",
+    "put": "정립",
+    "aka": [
+     "댑"
+    ]
    },
    "숙여 서기": {
     "side": null,
@@ -538,6 +553,11 @@
    },
    "팔걸이에 다리 걸치기": {
     "side": "걸친 다리",
+    "put": "정립",
+    "aka": []
+   },
+   "등받이에 두 팔 걸치고 앉기": {
+    "side": null,
     "put": "정립",
     "aka": []
    },
@@ -805,6 +825,13 @@
     "put": "등 아래",
     "aka": []
    },
+   "누워 한 다리 접어 깔기": {
+    "side": "접은 다리",
+    "put": "등 아래",
+    "aka": [
+     "데스드롭"
+    ]
+   },
    "팔꿈치 괴고 상체 들기": {
     "side": null,
     "put": "등 아래",
@@ -1052,6 +1079,11 @@
     "put": "정립",
     "aka": []
    },
+   "한 다리 뒤로 뻗은 쪼그림": {
+    "side": "뻗은 다리",
+    "put": "정립",
+    "aka": []
+   },
    "한 다리로 쪼그려 다른 다리 앞으로 뻗기": {
     "side": "뻗은 다리",
     "put": "정립",
@@ -1243,6 +1275,11 @@
     "put": "배 아래",
     "aka": []
    },
+   "무릎 대고 엉덩이 들어 팔 앞으로 뻗기": {
+    "side": null,
+    "put": "배 아래",
+    "aka": []
+   },
    "엎드려 팔로 상체 밀어 올리기": {
     "side": null,
     "put": "배 아래",
@@ -1425,6 +1462,11 @@
     "put": "정립",
     "aka": []
    },
+   "앞으로 기울여 팔 뒤로 붙이고 날기": {
+    "side": null,
+    "put": "정립",
+    "aka": []
+   },
    "착지 직전": {
     "side": null,
     "put": "정립",
@@ -1466,6 +1508,13 @@
     "side": "찬 다리",
     "put": "정립",
     "aka": []
+   },
+   "공중에서 거꾸로 차기": {
+    "side": "찬 다리",
+    "put": "도립",
+    "aka": [
+     "오버헤드킥"
+    ]
    },
    "앞으로 넘어지는 중": {
     "side": null,
@@ -1531,6 +1580,11 @@
    },
    "한 팔 한 다리 걸기": {
     "side": "건 쪽",
+    "put": "정립",
+    "aka": []
+   },
+   "봉 잡고 몸 옆으로 수평 버티기": {
+    "side": "아래 손",
     "put": "정립",
     "aka": []
    },
@@ -4538,7 +4592,7 @@
    },
    "겨루기 준비": {
     "side": null,
-    "shape": "서기 > 두 주먹 얼굴 앞에 모으기",
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
     "phase": null,
     "action": null,
     "parts": {
@@ -4556,10 +4610,12 @@
   "복싱": {
    "가드": {
     "side": null,
-    "shape": "서기 > 두 주먹 얼굴 앞에 모으기",
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
     "phase": null,
     "action": null,
-    "parts": {}
+    "parts": {
+     "손": "주먹"
+    }
    },
    "잽(임팩트)": {
     "side": null,
@@ -4722,6 +4778,5757 @@
      "손": "주먹"
     }
    }
+  },
+  "몸단장·목욕": {
+   "샤워하기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "머리 묶기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "화장하기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "거울 들여다보기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "앞"
+    }
+   },
+   "머리 말리기": {
+    "side": null,
+    "shape": "서기 > 한 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "욕조에 기대기": {
+    "side": null,
+    "shape": "앉기 > 미끄러져 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·폄"
+    }
+   }
+  },
+  "위생·화장실": {
+   "양치하기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "세수하기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·접음"
+    }
+   },
+   "손 씻기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "변기에 앉기": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "옷 입기": {
+   "바지 입기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": "중간",
+    "action": "바지 입기",
+    "parts": {
+     "몸통": "숙임",
+     "팔": "아래·굽힘"
+    }
+   },
+   "티셔츠 입기(중간)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "중간",
+    "action": "티셔츠 입기",
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "신발 끈 묶기": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임",
+     "팔": "앞아래·폄"
+    }
+   },
+   "넥타이 매기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "등 지퍼 올리기": {
+    "side": null,
+    "shape": "서기 > 뒷짐",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "뒤아래·접음"
+    }
+   }
+  },
+  "식사·음주": {
+   "건배(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": "임팩트",
+    "action": "건배",
+    "parts": {}
+   },
+   "국그릇 들고 마시기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음",
+     "머리": "위"
+    }
+   },
+   "젓가락질": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "취해 엎드리기": {
+    "side": null,
+    "shape": "앉기 > 책상에 엎드려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "취해 비틀거리기(중간)": {
+    "side": null,
+    "shape": "서기 > 옆으로 굽혀 서기",
+    "phase": "중간",
+    "action": "취해 비틀거리기",
+    "parts": {
+     "팔": "바깥·굽힘"
+    }
+   },
+   "배불러 뒤로 기대기": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 손 뒤로 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "쇼핑": {
+   "카트 밀기": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "진열대 위 물건 꺼내기": {
+    "side": null,
+    "shape": "서기 > 발끝 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   },
+   "아래 칸 물건 보기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 바닥 들여다보기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "쇼핑백 들고 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "쇼핑백 들고 걷기",
+    "parts": {
+     "팔": "아래·폄"
+    }
+   },
+   "옷 대보기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "독서·취미": {
+   "책 읽기": {
+    "side": null,
+    "shape": "앉기 > 손 모으고 고개 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "누워서 책 읽기": {
+    "side": null,
+    "shape": "눕기 > 누워 두 팔 위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "이젤에 그림 그리기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "앞아래·굽힘"
+    }
+   },
+   "뜨개질": {
+    "side": null,
+    "shape": "앉기 > 손 모으고 고개 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "바둑·체스 두기": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "퍼즐 맞추기": {
+    "side": null,
+    "shape": "눕기 > 엎드려 턱 괴기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "게임 플레이": {
+   "PC 게임": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "콘솔 게임": {
+    "side": null,
+    "shape": "앉기 > 손 모으고 고개 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "앞"
+    }
+   },
+   "게임하다 환호(임팩트)": {
+    "side": null,
+    "shape": "앉기 > 앉아서 기지개",
+    "phase": "임팩트",
+    "action": "게임하다 환호",
+    "parts": {
+     "손": "주먹"
+    }
+   },
+   "VR 게임(중간)": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": "중간",
+    "action": "VR 게임",
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "사진 촬영자": {
+   "카메라 들고 찍기": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "자연"
+    }
+   },
+   "쪼그려 찍기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "엎드려 찍기": {
+    "side": null,
+    "shape": "눕기 > 엎드려 턱 괴기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "높이 들고 찍기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "공연·무대": {
+   "마이크 잡고 노래": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "바깥·폄"
+    }
+   },
+   "무대 인사(임팩트)": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": "임팩트",
+    "action": "무대 인사",
+    "parts": {
+     "팔": "바깥아래·폄"
+    }
+   },
+   "관객 호응 유도": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "기타 솔로": {
+    "side": null,
+    "shape": "서기 > 옆으로 서서 두 손 어깨 위로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "드럼 연주 마무리(임팩트)": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": "임팩트",
+    "action": "드럼 연주 마무리",
+    "parts": {
+     "팔": "위·폄"
+    }
+   },
+   "무릎 꿇고 열창": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "오른팔": "앞위·접음"
+    }
+   }
+  },
+  "노래방·클럽": {
+   "노래방 열창": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "탬버린 흔들기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "중간",
+    "action": "탬버린 흔들기",
+    "parts": {}
+   },
+   "클럽 손 흔들기(중간)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "중간",
+    "action": "클럽 손 흔들기",
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "클럽 춤 박자 타기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": "중간",
+    "action": "클럽 춤 박자 타기",
+    "parts": {
+     "팔": "앞·접음"
+    }
+   }
+  },
+  "서커스·아크로바틱": {
+   "인간 피라미드 아래": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "외발자전거": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "공중그네(중간)": {
+    "side": null,
+    "shape": "매달리기 > 다리 걸어 거꾸로 매달리기",
+    "phase": "중간",
+    "action": "공중그네",
+    "parts": {
+     "팔": "위·폄"
+    }
+   },
+   "줄타기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "줄타기",
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "저글링(중간)": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": "중간",
+    "action": "저글링",
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "손 위 물구나무": {
+    "side": null,
+    "shape": "짚기 > 물구나무",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "마술·코미디": {
+   "마술 짜잔(임팩트)": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": "임팩트",
+    "action": "마술 짜잔",
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "모자에서 꺼내기": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "앞·굽힘"
+    }
+   },
+   "과장된 넘어짐(중간)": {
+    "side": null,
+    "shape": "공중 > 뒤로 넘어지는 중",
+    "phase": "중간",
+    "action": "과장된 넘어짐",
+    "parts": {}
+   }
+  },
+  "영화 액션": {
+   "총 겨누기": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "엄폐하기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 벽에 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "칼 휘두르기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "칼 휘두르기",
+    "parts": {
+     "팔": "앞·폄"
+    }
+   },
+   "옆으로 구르기(중간)": {
+    "side": null,
+    "shape": "눕기 > 등 대고 웅크려 구르기",
+    "phase": "중간",
+    "action": "옆으로 구르기",
+    "parts": {}
+   },
+   "슈퍼히어로 비행": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "아래·폄"
+    }
+   },
+   "등 맞대고 총 들기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "비틂@오른"
+    }
+   }
+  },
+  "재난·안전": {
+   "지진 대피 웅크리기": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·접음"
+    }
+   },
+   "책상 밑에 숨기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 무릎 껴안기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "손 들고 항복": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "무릎 꿇고 손 머리에": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·접음"
+    }
+   },
+   "연기 피해 낮게 기기": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "부상자 끌기": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·굽힘"
+    }
+   }
+  },
+  "직업: 경찰·소방·경비": {
+   "교통정리 멈춤": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "교통정리 진행": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "소방 호스 겨누기": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "구조자 업기": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "뒤아래·굽힘"
+    }
+   },
+   "보초 서기": {
+    "side": null,
+    "shape": "서기 > 뒷짐",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "범인 제압": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄",
+     "몸통": "숙임"
+    }
+   }
+  },
+  "직업: 의료진": {
+   "청진하기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "수술하기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "소독 후 손 들기": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "침상 옆 무릎 꿇기": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "직업: 요리사·바리스타·서비스": {
+   "프라이팬 뒤집기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": "임팩트",
+    "action": "프라이팬 뒤집기",
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "커피 내리기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "쟁반 들고 서빙": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "무릎 꿇고 주문 받기": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "직업: 건설·물류·정비": {
+   "사다리 오르기(중간)": {
+    "side": null,
+    "shape": "매달리기 > 벽에 손발로 붙어 매달리기",
+    "phase": "중간",
+    "action": "사다리 오르기",
+    "parts": {}
+   },
+   "자재 어깨에 메기": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "옆굽힘@왼"
+    }
+   },
+   "망치질(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "망치질",
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "톱질(중간)": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": "중간",
+    "action": "톱질",
+    "parts": {}
+   },
+   "상자 쌓기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "차 밑에 누워 정비": {
+    "side": null,
+    "shape": "눕기 > 누워 두 팔 위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞·굽힘"
+    }
+   },
+   "엔진룸 들여다보기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이 짚고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "직업: 미용·사무": {
+   "머리 자르기": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "서서 프레젠테이션": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "아래·폄"
+    }
+   },
+   "의자 돌려 대화": {
+    "side": null,
+    "shape": "앉기 > 옆으로 돌아앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "서류 들고 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "서류 들고 걷기",
+    "parts": {
+     "팔": "앞·접음"
+    }
+   }
+  },
+  "정원·목공": {
+   "물 주기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞아래·폄"
+    }
+   },
+   "잡초 뽑기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "가지치기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "꽃 냄새 맡기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·접음"
+    }
+   },
+   "손수레 밀기": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "아래·폄"
+    }
+   }
+  },
+  "연애·커플": {
+   "포옹": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 둥글게 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "백허그": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 모아 안기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "공주님 안기": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 모아 안기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "아래·굽힘"
+    }
+   },
+   "무릎 꿇고 프로포즈": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇고 팔 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "무릎베개 해주기": {
+    "side": null,
+    "shape": "꿇기 > 정좌",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "무릎베개 받기": {
+    "side": null,
+    "shape": "눕기 > 반듯이 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "팔짱 끼고 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 허리",
+    "phase": "중간",
+    "action": "팔짱 끼고 걷기",
+    "parts": {
+     "다리": "앞아래·폄"
+    }
+   },
+   "까치발로 뽀뽀": {
+    "side": null,
+    "shape": "서기 > 발끝 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른다리": "뒤·접음"
+    }
+   }
+  },
+  "임신·출산": {
+   "배 감싸 안기": {
+    "side": null,
+    "shape": "서기 > 배 앞에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "허리 받치고 서기": {
+    "side": null,
+    "shape": "서기 > 양손 허리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "짐볼에 앉기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "옆으로 누워 쉬기": {
+    "side": null,
+    "shape": "눕기 > 모로 누워 위 다리 앞으로 접기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "장애·보조기구": {
+   "휠체어 앉기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "아래·굽힘"
+    }
+   },
+   "휠체어 바퀴 밀기(중간)": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": "중간",
+    "action": "휠체어 바퀴 밀기",
+    "parts": {
+     "팔": "뒤아래·폄",
+     "몸통": "숙임"
+    }
+   },
+   "보행기 짚고 걷기(중간)": {
+    "side": null,
+    "shape": "기대기 > 허리 높이 짚고 앞으로 기대기",
+    "phase": "중간",
+    "action": "보행기 짚고 걷기",
+    "parts": {}
+   },
+   "흰 지팡이 짚기": {
+    "side": null,
+    "shape": "기대기 > 한 손 막대 짚고 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞아래·폄"
+    }
+   }
+  },
+  "물리치료·재활": {
+   "클램쉘": {
+    "side": null,
+    "shape": "눕기 > 모로 위 다리 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른다리": "앞·굽힘"
+    }
+   },
+   "벽 밀기": {
+    "side": null,
+    "shape": "기대기 > 벽에 두 손 짚고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "누워 다리 올리기": {
+    "side": null,
+    "shape": "눕기 > 누워 한 다리 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "목 스트레칭": {
+    "side": null,
+    "shape": "서기 > 한 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   }
+  },
+  "동물 흉내": {
+   "고양이 기지개": {
+    "side": null,
+    "shape": "짚기 > 무릎 대고 엉덩이 들어 팔 앞으로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "개구리 흉내": {
+    "side": null,
+    "shape": "쪼그리기 > 벌려 쪼그리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "고릴라 가슴 치기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "주먹",
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "원숭이 흉내": {
+    "side": null,
+    "shape": "서기 > 한 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "홍학 흉내": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(뒤로 접음)",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "새 날갯짓(중간)": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": "중간",
+    "action": "새 날갯짓",
+    "parts": {
+     "팔": "바깥위·폄"
+    }
+   },
+   "게걸음(중간)": {
+    "side": null,
+    "shape": "짚기 > 뒤로 손발 짚고 엉덩이 들기",
+    "phase": "중간",
+    "action": "게걸음",
+    "parts": {}
+   }
+  },
+  "전통 놀이": {
+   "제기차기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": "임팩트",
+    "action": "제기차기",
+    "parts": {
+     "오른발끝": "바깥"
+    }
+   },
+   "윷 던지기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": "임팩트",
+    "action": "윷 던지기",
+    "parts": {}
+   },
+   "강강술래(중간)": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": "중간",
+    "action": "강강술래",
+    "parts": {
+     "팔": "바깥아래·폄"
+    }
+   },
+   "투호 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": "준비",
+    "action": "투호 던지기",
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "연날리기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "줄다리기": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "말뚝박기": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   }
+  },
+  "전통 예술": {
+   "장구 치기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "상모 돌리기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": "중간",
+    "action": "상모 돌리기",
+    "parts": {
+     "팔": "바깥·굽힘"
+    }
+   },
+   "판소리 부채 펴기": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥위·굽힘"
+    }
+   },
+   "가야금 타기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘",
+     "몸통": "숙임"
+    }
+   }
+  },
+  "실내 놀이": {
+   "베개 싸움(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "베개 싸움",
+    "parts": {}
+   },
+   "이불 속 웅크리기": {
+    "side": null,
+    "shape": "눕기 > 모로 웅크려 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "소파에서 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 만세 뛰기",
+    "phase": "임팩트",
+    "action": "소파에서 뛰기",
+    "parts": {}
+   },
+   "등에 아이 태우고 기기(중간)": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": "중간",
+    "action": "등에 아이 태우고 기기",
+    "parts": {}
+   }
+  },
+  "관중·응원": {
+   "파도타기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "임팩트",
+    "action": "파도타기",
+    "parts": {}
+   },
+   "응원봉 흔들기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "중간",
+    "action": "응원봉 흔들기",
+    "parts": {}
+   },
+   "골 순간 머리 감싸기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리에 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "의자에서 일어나 환호": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "주먹"
+    }
+   }
+  },
+  "행사·시상": {
+   "시상대 트로피 들기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "메달 깨물기": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "학사모 던지기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 만세 뛰기",
+    "phase": "임팩트",
+    "action": "학사모 던지기",
+    "parts": {}
+   },
+   "테이프 커팅": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "연설·시위": {
+   "연단 연설": {
+    "side": null,
+    "shape": "기대기 > 허리 높이 짚고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "주먹 들어 구호": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "주먹"
+    }
+   },
+   "피켓 들기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   }
+  },
+  "보디빌딩 포즈": {
+   "프론트 더블 바이셉스": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "주먹"
+    }
+   },
+   "프론트 랫 스프레드": {
+    "side": null,
+    "shape": "서기 > 양손 허리",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "사이드 체스트": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·접음"
+    }
+   },
+   "앱도미널 앤 사이": {
+    "side": null,
+    "shape": "서기 > 머리 뒤 깍지",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른다리": "앞아래·폄"
+    }
+   },
+   "모스트 머스큘러": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·접음",
+     "손": "주먹"
+    }
+   }
+  },
+  "역도·파워리프팅": {
+   "스내치(마무리)": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": "마무리",
+    "action": "스내치",
+    "parts": {
+     "팔": "위·폄"
+    }
+   },
+   "클린(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": "중간",
+    "action": "클린",
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "저크(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "저크",
+    "parts": {
+     "팔": "위·폄"
+    }
+   }
+  },
+  "사이클·승마": {
+   "사이클 경기 자세": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉아 앞으로 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "일어서서 페달 밟기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "일어서서 페달 밟기",
+    "parts": {
+     "몸통": "숙임",
+     "팔": "앞아래·폄"
+    }
+   },
+   "승마 장애물 넘기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "승마 장애물 넘기",
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "수상 스포츠": {
+   "카누 노 젓기(중간)": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": "중간",
+    "action": "카누 노 젓기",
+    "parts": {
+     "팔": "앞위·굽힘",
+     "몸통": "비틂@왼"
+    }
+   },
+   "조정 당기기(마무리)": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": "마무리",
+    "action": "조정 당기기",
+    "parts": {
+     "몸통": "젖힘",
+     "팔": "앞·접음"
+    }
+   },
+   "수상스키": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "패들보드 젓기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "패들보드 젓기",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   }
+  },
+  "항공·익스트림": {
+   "스카이다이빙 자유낙하": {
+    "side": null,
+    "shape": "공중 > 사지 펼쳐 낙하",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "번지점프 뛰어내리기(중간)": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": "중간",
+    "action": "번지점프 뛰어내리기",
+    "parts": {}
+   },
+   "패러글라이딩 비행": {
+    "side": null,
+    "shape": "앉기 > 다리 늘어뜨려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "스키점프 비행(중간)": {
+    "side": null,
+    "shape": "공중 > 앞으로 기울여 팔 뒤로 붙이고 날기",
+    "phase": "중간",
+    "action": "스키점프 비행",
+    "parts": {}
+   }
+  },
+  "빙상·컬링": {
+   "컬링 딜리버리(중간)": {
+    "side": null,
+    "shape": "쪼그리기 > 한 다리 뒤로 뻗은 쪼그림",
+    "phase": "중간",
+    "action": "컬링 딜리버리",
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   },
+   "컬링 스위핑(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "컬링 스위핑",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "스피드스케이팅(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "스피드스케이팅",
+    "parts": {
+     "팔": "뒤아래·굽힘"
+    }
+   },
+   "아이스하키 슈팅(임팩트)": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": "임팩트",
+    "action": "아이스하키 슈팅",
+    "parts": {
+     "팔": "앞아래·폄",
+     "다리": "앞아래·굽힘"
+    }
+   }
+  },
+  "럭비·미식축구·핸드볼": {
+   "3포인트 스탠스": {
+    "side": null,
+    "shape": "짚기 > 손 짚고 앞뒤로 발 디디기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "스크럼": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "태클(임팩트)": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": "임팩트",
+    "action": "태클",
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "핸드볼 점프 슛(임팩트)": {
+    "side": null,
+    "shape": "공중 > 한 팔 위로 뻗어 뛰기",
+    "phase": "임팩트",
+    "action": "핸드볼 점프 슛",
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   }
+  },
+  "사격": {
+   "서서쏴": {
+    "side": null,
+    "shape": "서기 > 옆으로 서서 두 손 어깨 위로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "옆@왼"
+    }
+   },
+   "무릎쏴 자세": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "권총 사격": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "아래·접음"
+    }
+   }
+  },
+  "현대무용·재즈": {
+   "콘트랙션": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "말림"
+    }
+   },
+   "바닥 구르기(중간)": {
+    "side": null,
+    "shape": "눕기 > 누워 몸 비틀기",
+    "phase": "중간",
+    "action": "바닥 구르기",
+    "parts": {}
+   },
+   "재즈 핸즈": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐",
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "레이아웃": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 앞으로)",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "팔": "바깥·폄"
+    }
+   }
+  },
+  "벨리댄스·플라멩코·탱고": {
+   "벨리댄스 골반 흔들기(중간)": {
+    "side": null,
+    "shape": "서기 > 짝다리",
+    "phase": "중간",
+    "action": "벨리댄스 골반 흔들기",
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "플라멩코 팔 올리기": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "오른다리": "앞아래·폄"
+    }
+   },
+   "플라멩코 발 구르기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "임팩트",
+    "action": "플라멩코 발 구르기",
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   }
+  },
+  "폴댄스·에어리얼": {
+   "폴 스핀(중간)": {
+    "side": null,
+    "shape": "매달리기 > 한 팔 한 다리 걸기",
+    "phase": "중간",
+    "action": "폴 스핀",
+    "parts": {}
+   },
+   "폴 거꾸로 매달리기": {
+    "side": null,
+    "shape": "매달리기 > 다리 걸어 거꾸로 매달리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "실크 감아 오르기(중간)": {
+    "side": null,
+    "shape": "매달리기 > 손발로 줄 감아 매달리기",
+    "phase": "중간",
+    "action": "실크 감아 오르기",
+    "parts": {}
+   },
+   "링 위에 앉기": {
+    "side": null,
+    "shape": "앉기 > 다리 늘어뜨려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   }
+  },
+  "무에타이·킥복싱": {
+   "니킥(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": "임팩트",
+    "action": "니킥",
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "클린치": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 모아 안기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "로킥(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 옆으로)",
+    "phase": "임팩트",
+    "action": "로킥",
+    "parts": {
+     "몸통": "비틂@왼",
+     "손": "주먹"
+    }
+   },
+   "와이크루 무릎 꿇기": {
+    "side": null,
+    "shape": "꿇기 > 정좌",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   }
+  },
+  "카포에라": {
+   "진가(중간)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "중간",
+    "action": "진가",
+    "parts": {
+     "오른팔": "앞위·접음"
+    }
+   },
+   "아우(중간)": {
+    "side": null,
+    "shape": "짚기 > 옆으로 손 짚고 거꾸로 다리 벌리기",
+    "phase": "중간",
+    "action": "아우",
+    "parts": {}
+   },
+   "네가치바": {
+    "side": null,
+    "shape": "짚기 > 한 손 짚고 비스듬히 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·접음"
+    }
+   }
+  },
+  "합기도·택견": {
+   "택견 품밟기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "택견 품밟기",
+    "parts": {
+     "다리": "아래·굽힘",
+     "팔": "앞·굽힘"
+    }
+   },
+   "택견 곁차기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 옆으로)",
+    "phase": "임팩트",
+    "action": "택견 곁차기",
+    "parts": {}
+   },
+   "합기도 손목 꺾기": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "앞구르기 낙법(중간)": {
+    "side": null,
+    "shape": "눕기 > 등 대고 웅크려 구르기",
+    "phase": "중간",
+    "action": "앞구르기 낙법",
+    "parts": {}
+   }
+  },
+  "직업: 교사·강사": {
+   "칠판 가리키며 설명": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴"
+    }
+   },
+   "교탁 짚고 말하기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이 짚고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "학생 책상 들여다보기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞아래·폄"
+    }
+   }
+  },
+  "직업: 운동 코치·트레이너": {
+   "호루라기 불기": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "바깥아래·접음"
+    }
+   },
+   "자세 잡아주기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "박수로 격려(임팩트)": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": "임팩트",
+    "action": "박수로 격려",
+    "parts": {
+     "다리": "바깥아래·폄"
+    }
+   }
+  },
+  "직업: 요양·돌봄": {
+   "환자 부축하기": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 모아 안기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "휠체어 밀기": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "침대 옆 쪼그려 앉기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 팔 무릎에 걸치기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "직업: 배달·택배·우편": {
+   "오토바이 배달": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉아 앞으로 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "문 앞 상자 내려놓기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "초인종 누르기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴"
+    }
+   },
+   "등에 상자 지기": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "뒤아래·굽힘"
+    }
+   }
+  },
+  "직업: 환경미화·청소": {
+   "빗자루 쓸기(중간)": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": "중간",
+    "action": "빗자루 쓸기",
+    "parts": {
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "쓰레기봉투 들어 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "쓰레기봉투 들어 던지기",
+    "parts": {}
+   },
+   "창문 닦기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "대걸레질(중간)": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": "중간",
+    "action": "대걸레질",
+    "parts": {}
+   }
+  },
+  "직업: 마트·매장": {
+   "진열대 채우기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "계산대 서기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "곧음"
+    }
+   },
+   "고객 응대 공손": {
+    "side": null,
+    "shape": "서기 > 배 앞에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "박스 커터 쓰기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   }
+  },
+  "직업: 전기·배관·도장": {
+   "사다리 위 천장 작업": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "싱크대 밑 배관": {
+    "side": null,
+    "shape": "눕기 > 누워 두 팔 위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞·굽힘",
+     "머리": "옆@오른"
+    }
+   },
+   "벽 페인트칠(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": "중간",
+    "action": "벽 페인트칠",
+    "parts": {}
+   },
+   "용접하기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘",
+     "머리": "아래"
+    }
+   }
+  },
+  "직업: 과학·연구": {
+   "현미경 들여다보기": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·접음"
+    }
+   },
+   "시험관 들어 보기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "화이트보드 계산": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼손": "가리킴"
+    }
+   }
+  },
+  "직업: 항공·승무": {
+   "기내 안전 시연": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·굽힘"
+    }
+   },
+   "항공기 유도 마셜링": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "조종석 앉기": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 뻗어 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "짐칸에 가방 올리기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "아래·폄"
+    }
+   }
+  },
+  "직업: 방송·언론": {
+   "앵커 데스크": {
+    "side": null,
+    "shape": "앉기 > 무릎 위에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "현장 리포트 마이크": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "기상캐스터 지도 가리키기": {
+    "side": null,
+    "shape": "서기 > 옆으로 굽혀 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥·폄"
+    }
+   },
+   "카메라맨 어깨 촬영": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "직업: 심판": {
+   "옐로카드 들기": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "야구 스트라이크 콜(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 팔 앞으로 뻗고 다른 팔 허리에",
+    "phase": "임팩트",
+    "action": "야구 스트라이크 콜",
+    "parts": {
+     "오른팔": "바깥·접음",
+     "오른손": "주먹"
+    }
+   },
+   "배구 득점 신호": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥·폄"
+    }
+   },
+   "농구 반칙 선언": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "주먹"
+    }
+   }
+  },
+  "직업: 어업·해녀": {
+   "그물 끌어올리기": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "해녀 자맥질(중간)": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": "중간",
+    "action": "해녀 자맥질",
+    "parts": {
+     "다리": "위·폄"
+    }
+   },
+   "갯벌 조개 캐기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "직업: 벌목·양봉·목축": {
+   "도끼질(준비)": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": "준비",
+    "action": "도끼질",
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "벌통 들여다보기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "젖 짜기": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "울타리에 기대기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이에 팔 걸치고 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "직업: 사육·조련": {
+   "먹이 높이 들기": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "발끝": "앞"
+    }
+   },
+   "돌고래 신호": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴"
+    }
+   },
+   "쪼그려 동물 부르기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   }
+  },
+  "직업: 마사지·치료사": {
+   "등 마사지": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "발 마사지": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "지압하기": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄",
+     "몸통": "숙임"
+    }
+   }
+  },
+  "직업: 스턴트·대역": {
+   "계단 굴러 떨어지기(중간)": {
+    "side": null,
+    "shape": "눕기 > 등 대고 웅크려 구르기",
+    "phase": "중간",
+    "action": "계단 굴러 떨어지기",
+    "parts": {}
+   },
+   "창문 뚫고 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "창문 뚫고 뛰기",
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "와이어 액션": {
+    "side": null,
+    "shape": "공중 > 사지 펼쳐 낙하",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "카페·대기실": {
+   "카페 창가 턱 괴기": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "카페 의자에 기대 다리 꼬기": {
+    "side": null,
+    "shape": "앉기 > 다리 꼬기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "카운터에 기대 주문": {
+    "side": null,
+    "shape": "기대기 > 팔꿈치 괴고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "대기실 벽에 기대 서기": {
+    "side": null,
+    "shape": "기대기 > 벽에 등 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "대기 의자 졸기": {
+    "side": null,
+    "shape": "앉기 > 미끄러져 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   }
+  },
+  "버스 정류장·거리": {
+   "정류장 기둥에 기대기": {
+    "side": null,
+    "shape": "기대기 > 벽에 어깨 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "가로등에 한 손 짚기": {
+    "side": null,
+    "shape": "기대기 > 벽에 한 손 짚고 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "버스 오는 쪽 보기": {
+    "side": null,
+    "shape": "서기 > 어깨 너머로 돌아보기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "손 흔들어 택시 잡기": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·폄"
+    }
+   },
+   "횡단보도 기다리기": {
+    "side": null,
+    "shape": "서기 > 주머니에 손",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "공원·벤치": {
+   "벤치 등받이에 팔 걸치기": {
+    "side": null,
+    "shape": "앉기 > 등받이에 두 팔 걸치고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "벤치에 누워 쉬기": {
+    "side": null,
+    "shape": "눕기 > 무릎 세워 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "잔디밭에 팔 베고 눕기": {
+    "side": null,
+    "shape": "눕기 > 팔베개",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "나무에 기대 앉기": {
+    "side": null,
+    "shape": "앉기 > 무릎 세워 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "벤치에 걸터앉아 신발 끈": {
+    "side": null,
+    "shape": "앉기 > 한 발 의자에 올려 무릎 세우기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   }
+  },
+  "바·펍": {
+   "바 스툴 발 걸이 앉기": {
+    "side": null,
+    "shape": "앉기 > 다리 늘어뜨려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른다리": "앞아래·접음"
+    }
+   },
+   "바에 팔꿈치 기대기": {
+    "side": null,
+    "shape": "기대기 > 팔꿈치 괴고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "스탠딩 테이블 기대기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이 짚고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "가로아래·폄"
+    }
+   },
+   "다트판 앞 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": "준비",
+    "action": "다트판 앞 던지기",
+    "parts": {
+     "몸통": "숙임"
+    }
+   }
+  },
+  "해변·수영장": {
+   "선베드 일광욕": {
+    "side": null,
+    "shape": "눕기 > 반쯤 기대 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·접음"
+    }
+   },
+   "모래에 엎드려 일광욕": {
+    "side": null,
+    "shape": "눕기 > 엎드려 팔 베고 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "수영장 가장자리 매달리기": {
+    "side": null,
+    "shape": "매달리기 > 봉에 배 걸치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "수영장 가에 걸터앉기": {
+    "side": null,
+    "shape": "앉기 > 다리 늘어뜨려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "뒤아래·폄"
+    }
+   },
+   "파도 피해 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 무릎 올려 뛰기",
+    "phase": "임팩트",
+    "action": "파도 피해 뛰기",
+    "parts": {}
+   }
+  },
+  "침실": {
+   "침대 머리판 기대 앉기": {
+    "side": null,
+    "shape": "눕기 > 반쯤 기대 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "침대 가장자리에 걸터앉기": {
+    "side": null,
+    "shape": "앉기 > 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "침대에 엎드려 다리 흔들기(중간)": {
+    "side": null,
+    "shape": "눕기 > 엎드려 무릎 굽혀 발 들기",
+    "phase": "중간",
+    "action": "침대에 엎드려 다리 흔들기",
+    "parts": {}
+   },
+   "아침 기지개": {
+    "side": null,
+    "shape": "눕기 > 누워 팔 머리 위로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "엘리베이터·에스컬레이터·계단": {
+   "엘리베이터 벽 기대기": {
+    "side": null,
+    "shape": "기대기 > 벽에 등 기대 팔짱",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "에스컬레이터 한 칸 위": {
+    "side": null,
+    "shape": "서기 > 한 발 올려놓고 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥아래·굽힘"
+    }
+   },
+   "계단 난간 잡고 내려가기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "계단 난간 잡고 내려가기",
+    "parts": {
+     "오른팔": "바깥아래·폄"
+    }
+   },
+   "계단참에 앉기": {
+    "side": null,
+    "shape": "앉기 > 무릎 높이 올려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "교통수단 안": {
+   "비행기 좌석 목베개 졸기": {
+    "side": null,
+    "shape": "앉기 > 미끄러져 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   },
+   "기차 창밖 보기": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "옆@오른"
+    }
+   },
+   "배 난간에 기대기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이에 팔 걸치고 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "지하철 문에 기대기": {
+    "side": null,
+    "shape": "기대기 > 벽에 등 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "오토바이 뒷자리 매달리기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "도서관·스터디": {
+   "책장 높은 칸 꺼내기": {
+    "side": null,
+    "shape": "서기 > 발끝 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   },
+   "책장 사이 바닥에 앉아 읽기": {
+    "side": null,
+    "shape": "앉기 > 무릎 세워 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "엎드려 공부하다 자기": {
+    "side": null,
+    "shape": "앉기 > 책상에 엎드려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "의자 뒤로 젖혀 기지개": {
+    "side": null,
+    "shape": "앉기 > 앉아서 기지개",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "부엌·식탁": {
+   "식탁에 팔꿈치 괴기": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "앞·접음"
+    }
+   },
+   "냉장고 들여다보기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "싱크대에 기대기": {
+    "side": null,
+    "shape": "기대기 > 엉덩이 걸치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "뒤아래·폄"
+    }
+   }
+  },
+  "베란다·창가": {
+   "창틀에 팔 괴고 밖 보기": {
+    "side": null,
+    "shape": "기대기 > 팔꿈치 괴고 앞으로 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "난간에 기대 담배": {
+    "side": null,
+    "shape": "기대기 > 허리 높이에 팔 걸치고 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·접음"
+    }
+   },
+   "창문 열기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·폄"
+    }
+   }
+  },
+  "교실": {
+   "교실 뒤 벽에 기대 서기": {
+    "side": null,
+    "shape": "기대기 > 벽에 등 기대 한 발 벽에",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "의자 두 다리로 기울이기": {
+    "side": null,
+    "shape": "앉기 > 머리 뒤 깍지 끼고 기대 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "책상 위에 걸터앉기": {
+    "side": null,
+    "shape": "앉기 > 한 발 바닥 대고 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "쉬는 시간 엎드려 자기": {
+    "side": null,
+    "shape": "앉기 > 책상에 엎드려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "테니스": {
+   "서브 토스(준비)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "준비",
+    "action": "서브 토스",
+    "parts": {
+     "왼팔": "위·폄",
+     "오른팔": "뒤아래·접음"
+    }
+   },
+   "백핸드(임팩트)": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": "임팩트",
+    "action": "백핸드",
+    "parts": {
+     "팔": "가로질러·폄"
+    }
+   },
+   "발리": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "슬라이딩 리턴(임팩트)": {
+    "side": null,
+    "shape": "서기 > 옆 런지",
+    "phase": "임팩트",
+    "action": "슬라이딩 리턴",
+    "parts": {
+     "오른팔": "바깥·폄"
+    }
+   }
+  },
+  "배드민턴·스쿼시": {
+   "하이클리어(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "하이클리어",
+    "parts": {
+     "왼팔": "앞위·폄"
+    }
+   },
+   "네트 앞 푸시(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "네트 앞 푸시",
+    "parts": {
+     "오른팔": "앞위·굽힘"
+    }
+   },
+   "스쿼시 벽 앞 리턴(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "스쿼시 벽 앞 리턴",
+    "parts": {
+     "오른팔": "앞아래·폄"
+    }
+   }
+  },
+  "탁구": {
+   "탁구 준비": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "탁구 서브(준비)": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": "준비",
+    "action": "탁구 서브",
+    "parts": {}
+   },
+   "탁구 백핸드(임팩트)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": "임팩트",
+    "action": "탁구 백핸드",
+    "parts": {
+     "오른팔": "가로질러·굽힘"
+    }
+   }
+  },
+  "필드하키·크리켓·소프트볼": {
+   "하키 드리블(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "하키 드리블",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "크리켓 타격 준비": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "크리켓 볼링(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "크리켓 볼링",
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   },
+   "소프트볼 언더핸드 투구(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "소프트볼 언더핸드 투구",
+    "parts": {
+     "오른팔": "앞아래·폄"
+    }
+   }
+  },
+  "피구·족구·세팍타크로": {
+   "피구 피하기(중간)": {
+    "side": null,
+    "shape": "서기 > 옆으로 굽혀 서기",
+    "phase": "중간",
+    "action": "피구 피하기",
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "피구 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "피구 던지기",
+    "parts": {}
+   },
+   "족구 발등 차기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 옆으로)",
+    "phase": "임팩트",
+    "action": "족구 발등 차기",
+    "parts": {
+     "몸통": "옆굽힘@왼"
+    }
+   },
+   "세팍타크로 시저스 킥(임팩트)": {
+    "side": null,
+    "shape": "공중 > 공중에서 거꾸로 차기",
+    "phase": "임팩트",
+    "action": "세팍타크로 시저스 킥",
+    "parts": {}
+   }
+  },
+  "얼티밋·프리스비": {
+   "프리스비 던지기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": "임팩트",
+    "action": "프리스비 던지기",
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   },
+   "다이빙 캐치(임팩트)": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": "임팩트",
+    "action": "다이빙 캐치",
+    "parts": {}
+   },
+   "점프 캐치(임팩트)": {
+    "side": null,
+    "shape": "공중 > 한 팔 위로 뻗어 뛰기",
+    "phase": "임팩트",
+    "action": "점프 캐치",
+    "parts": {}
+   }
+  },
+  "트램펄린": {
+   "트램펄린 무릎 접어 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "트램펄린 무릎 접어 뛰기",
+    "parts": {}
+   },
+   "트램펄린 엉덩이 착지": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 손 뒤로 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "트램펄린 등 착지": {
+    "side": null,
+    "shape": "눕기 > 누워 다리 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·폄"
+    }
+   },
+   "트램펄린 공중 다리 벌리기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 다리 옆으로 벌려 접어 뛰기",
+    "phase": "임팩트",
+    "action": "트램펄린 공중 다리 벌리기",
+    "parts": {}
+   }
+  },
+  "줄넘기·훌라후프": {
+   "줄넘기 이단 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 무릎 올려 뛰기",
+    "phase": "임팩트",
+    "action": "줄넘기 이단 뛰기",
+    "parts": {
+     "팔": "바깥아래·굽힘"
+    }
+   },
+   "줄넘기 엑스자(임팩트)": {
+    "side": null,
+    "shape": "공중 > 곧게 뛰기",
+    "phase": "임팩트",
+    "action": "줄넘기 엑스자",
+    "parts": {
+     "팔": "가로질러·폄"
+    }
+   },
+   "훌라후프 돌리기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "훌라후프 돌리기",
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   }
+  },
+  "칼리스데닉스": {
+   "휴먼 플래그": {
+    "side": null,
+    "shape": "매달리기 > 봉 잡고 몸 옆으로 수평 버티기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "머슬업(중간)": {
+    "side": null,
+    "shape": "매달리기 > 봉에 배 걸치기",
+    "phase": "중간",
+    "action": "머슬업",
+    "parts": {
+     "팔": "아래·폄"
+    }
+   },
+   "플란체": {
+    "side": null,
+    "shape": "짚기 > 손 짚고 다리 앞으로 뻗어 띄우기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "뒤·폄",
+     "몸통": "숙임"
+    }
+   },
+   "핸드스탠드 푸시업(중간)": {
+    "side": null,
+    "shape": "짚기 > 물구나무",
+    "phase": "중간",
+    "action": "핸드스탠드 푸시업",
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   }
+  },
+  "크로스핏": {
+   "케틀벨 스윙(임팩트)": {
+    "side": null,
+    "shape": "서기 > 다리 벌려 서기",
+    "phase": "임팩트",
+    "action": "케틀벨 스윙",
+    "parts": {
+     "팔": "앞·폄"
+    }
+   },
+   "월볼(준비)": {
+    "side": null,
+    "shape": "서기 > 스쿼트",
+    "phase": "준비",
+    "action": "월볼",
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "박스 점프(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "박스 점프",
+    "parts": {}
+   },
+   "로프 클라이밍(중간)": {
+    "side": null,
+    "shape": "매달리기 > 손발로 줄 감아 매달리기",
+    "phase": "중간",
+    "action": "로프 클라이밍",
+    "parts": {}
+   }
+  },
+  "에어로빅·줌바": {
+   "에어로빅 사이드 스텝(중간)": {
+    "side": null,
+    "shape": "서기 > 옆으로 한 발 내딛기",
+    "phase": "중간",
+    "action": "에어로빅 사이드 스텝",
+    "parts": {
+     "팔": "바깥위·폄"
+    }
+   },
+   "무릎 올리며 박수(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": "임팩트",
+    "action": "무릎 올리며 박수",
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "줌바 골반 흔들기(중간)": {
+    "side": null,
+    "shape": "서기 > 짝다리",
+    "phase": "중간",
+    "action": "줌바 골반 흔들기",
+    "parts": {
+     "팔": "바깥위·굽힘"
+    }
+   }
+  },
+  "마라톤·경보": {
+   "마라톤 달리기(중간)": {
+    "side": null,
+    "shape": "공중 > 다리 앞뒤로 벌려 뛰기",
+    "phase": "중간",
+    "action": "마라톤 달리기",
+    "parts": {
+     "팔": "앞아래·접음"
+    }
+   },
+   "경보(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "경보",
+    "parts": {
+     "팔": "앞아래·접음"
+    }
+   },
+   "결승 테이프 끊기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "임팩트",
+    "action": "결승 테이프 끊기",
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "급수대 물 받기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "급수대 물 받기",
+    "parts": {
+     "오른팔": "바깥·폄"
+    }
+   }
+  },
+  "철인3종·장애물 경기": {
+   "자전거에서 내려 뛰기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "자전거에서 내려 뛰기",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "그물 기어가기(중간)": {
+    "side": null,
+    "shape": "눕기 > 엎드려 팔꿈치 짚고 한 무릎 당기기",
+    "phase": "중간",
+    "action": "그물 기어가기",
+    "parts": {}
+   },
+   "벽 넘기(중간)": {
+    "side": null,
+    "shape": "매달리기 > 봉에 배 걸치기",
+    "phase": "중간",
+    "action": "벽 넘기",
+    "parts": {}
+   },
+   "진흙 웅덩이 기기(중간)": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": "중간",
+    "action": "진흙 웅덩이 기기",
+    "parts": {}
+   }
+  },
+  "봅슬레이·루지·스켈레톤": {
+   "봅슬레이 썰매 밀기(준비)": {
+    "side": null,
+    "shape": "짚기 > 손 짚고 앞뒤로 발 디디기",
+    "phase": "준비",
+    "action": "봅슬레이 썰매 밀기",
+    "parts": {}
+   },
+   "루지 활주": {
+    "side": null,
+    "shape": "눕기 > 반듯이 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "스켈레톤 활주": {
+    "side": null,
+    "shape": "눕기 > 엎드려 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   }
+  },
+  "스노보드·프리스타일 스키": {
+   "스노보드 그랩(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "스노보드 그랩",
+    "parts": {
+     "오른팔": "아래·폄"
+    }
+   },
+   "하프파이프 공중(임팩트)": {
+    "side": null,
+    "shape": "공중 > 젖혀 뛰기",
+    "phase": "임팩트",
+    "action": "하프파이프 공중",
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "스키 모글(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "스키 모글",
+    "parts": {
+     "다리": "아래·접음"
+    }
+   }
+  },
+  "산악자전거·BMX": {
+   "BMX 공중 묘기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 다리 앞으로 모아 접어 뛰기",
+    "phase": "임팩트",
+    "action": "BMX 공중 묘기",
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "산악자전거 내리막(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "산악자전거 내리막",
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "자전거 앞바퀴 들기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "팔": "앞·폄"
+    }
+   }
+  },
+  "모터스포츠": {
+   "레이싱카 운전": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 뻗어 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "모터바이크 코너링(중간)": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉아 앞으로 숙이기",
+    "phase": "중간",
+    "action": "모터바이크 코너링",
+    "parts": {
+     "몸통": "옆굽힘@오른",
+     "오른다리": "바깥·굽힘"
+    }
+   },
+   "샴페인 뿌리기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   }
+  },
+  "로데오·승마 묘기": {
+   "로데오(중간)": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": "중간",
+    "action": "로데오",
+    "parts": {
+     "오른팔": "위·폄",
+     "몸통": "젖힘"
+    }
+   },
+   "말 위에 서기": {
+    "side": null,
+    "shape": "서기 > 다리 벌려 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "올가미 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "준비",
+    "action": "올가미 던지기",
+    "parts": {
+     "오른팔": "바깥위·굽힘"
+    }
+   }
+  },
+  "세일링·윈드서핑": {
+   "요트 하이킹": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "팔": "앞·굽힘"
+    }
+   },
+   "윈드서핑 세일 당기기": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "카이트서핑 점프(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "카이트서핑 점프",
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   }
+  },
+  "아티스틱 스위밍·수구": {
+   "물 위로 다리 뻗기": {
+    "side": null,
+    "shape": "짚기 > 어깨로 거꾸로 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "위·폄"
+    }
+   },
+   "수구 슛(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "임팩트",
+    "action": "수구 슛",
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "선헤엄": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·굽힘"
+    }
+   }
+  },
+  "다이빙 경기": {
+   "다이빙 턱 자세(중간)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "중간",
+    "action": "다이빙 턱 자세",
+    "parts": {}
+   },
+   "다이빙 파이크(중간)": {
+    "side": null,
+    "shape": "공중 > 다리 앞으로 모아 접어 뛰기",
+    "phase": "중간",
+    "action": "다이빙 파이크",
+    "parts": {}
+   },
+   "플랫폼 물구나무 출발": {
+    "side": null,
+    "shape": "짚기 > 물구나무",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "입수 직전": {
+    "side": null,
+    "shape": "공중 > 머리부터 팔 뻗어 떨어지기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·폄"
+    }
+   }
+  },
+  "스모": {
+   "시코 다리 들기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 옆으로)",
+    "phase": "준비",
+    "action": "시코 다리 들기",
+    "parts": {
+     "팔": "아래·폄",
+     "몸통": "옆굽힘@왼"
+    }
+   },
+   "시키리(준비)": {
+    "side": null,
+    "shape": "쪼그리기 > 벌려 쪼그리기",
+    "phase": "준비",
+    "action": "시키리",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "밀어내기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": "임팩트",
+    "action": "밀어내기",
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "MMA·종합격투기": {
+   "그라운드 앤 파운드": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·접음",
+     "손": "주먹"
+    }
+   },
+   "테이크다운(중간)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "중간",
+    "action": "테이크다운",
+    "parts": {
+     "팔": "앞아래·굽힘",
+     "몸통": "숙임"
+    }
+   },
+   "케이지 철망에 기대기": {
+    "side": null,
+    "shape": "기대기 > 벽에 등 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   }
+  },
+  "가라테": {
+   "가라테 정권 지르기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 팔 앞으로 뻗고 다른 팔 허리에",
+    "phase": "임팩트",
+    "action": "가라테 정권 지르기",
+    "parts": {
+     "손": "주먹",
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "가라테 앞차기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 앞으로)",
+    "phase": "임팩트",
+    "action": "가라테 앞차기",
+    "parts": {
+     "손": "주먹"
+    }
+   },
+   "가라테 수도 막기": {
+    "side": null,
+    "shape": "서기 > 뒤 무릎 굽혀 앞뒤로 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘",
+     "손": "펴짐"
+    }
+   }
+  },
+  "쿵푸·우슈": {
+   "마보": {
+    "side": null,
+    "shape": "서기 > 기마 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·접음",
+     "손": "주먹"
+    }
+   },
+   "궁보 장권": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄",
+     "왼팔": "위·굽힘"
+    }
+   },
+   "독립보": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·굽힘",
+     "왼팔": "앞·굽힘"
+    }
+   },
+   "선풍각(임팩트)": {
+    "side": null,
+    "shape": "공중 > 공중에서 한 다리 차기",
+    "phase": "임팩트",
+    "action": "선풍각",
+    "parts": {
+     "몸통": "비틂@오른"
+    }
+   }
+  },
+  "레슬링": {
+   "레슬링 기본 자세": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "브리지 버티기": {
+    "side": null,
+    "shape": "짚기 > 누워 어깨와 발로 엉덩이 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "파테르 자세": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "뒤아래·접음"
+    }
+   }
+  },
+  "유도": {
+   "유도 잡기": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "업어치기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "임팩트",
+    "action": "업어치기",
+    "parts": {
+     "팔": "앞·접음",
+     "몸통": "비틂@왼"
+    }
+   },
+   "누르기 굳히기": {
+    "side": null,
+    "shape": "눕기 > 엎드려 팔다리 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "주짓수": {
+   "하위 가드 포지션": {
+    "side": null,
+    "shape": "눕기 > 무릎 세워 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞위·굽힘"
+    }
+   },
+   "마운트 포지션": {
+    "side": null,
+    "shape": "꿇기 > 무릎 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "삼각조르기": {
+    "side": null,
+    "shape": "눕기 > 누워 다리 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞위·접음"
+    }
+   }
+  },
+  "검도": {
+   "검도 상단 자세": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·폄"
+    }
+   },
+   "검도 손목치기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "임팩트",
+    "action": "검도 손목치기",
+    "parts": {
+     "팔": "앞·폄"
+    }
+   },
+   "존거 쪼그려 앉기": {
+    "side": null,
+    "shape": "쪼그리기 > 발뒤꿈치 들고 쪼그리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "펜싱": {
+   "펜싱 팡트(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "펜싱 팡트",
+    "parts": {
+     "오른팔": "앞·폄",
+     "왼팔": "뒤아래·폄"
+    }
+   },
+   "펜싱 플레슈(중간)": {
+    "side": null,
+    "shape": "공중 > 다리 앞뒤로 벌려 뛰기",
+    "phase": "중간",
+    "action": "펜싱 플레슈",
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   },
+   "펜싱 경례": {
+    "side": null,
+    "shape": "서기 > 한 손 이마에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·폄"
+    }
+   }
+  },
+  "양궁": {
+   "양궁 활시위 당기기": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·접음",
+     "머리": "옆@왼"
+    }
+   },
+   "양궁 릴리스(마무리)": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": "마무리",
+    "action": "양궁 릴리스",
+    "parts": {
+     "오른팔": "뒤아래·굽힘"
+    }
+   }
+  },
+  "볼링": {
+   "볼링 스윙(준비)": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": "준비",
+    "action": "볼링 스윙",
+    "parts": {
+     "오른팔": "뒤아래·폄"
+    }
+   },
+   "볼링 투구(마무리)": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 대고 깊이 앞뒤로 벌리기",
+    "phase": "마무리",
+    "action": "볼링 투구",
+    "parts": {
+     "오른팔": "앞위·폄"
+    }
+   },
+   "스트라이크 환호": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "주먹",
+     "다리": "앞아래·굽힘"
+    }
+   }
+  },
+  "당구": {
+   "당구 큐 겨누기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "당구대에 걸터앉아 치기": {
+    "side": null,
+    "shape": "앉기 > 한 발 바닥 대고 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "당구대에 큐 짚고 기다리기": {
+    "side": null,
+    "shape": "기대기 > 한 손 막대 짚고 서기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "게이트볼·파크골프": {
+   "게이트볼 타격(임팩트)": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": "임팩트",
+    "action": "게이트볼 타격",
+    "parts": {
+     "다리": "앞아래·폄"
+    }
+   },
+   "파크골프 퍼팅": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "스틱에 기대 쉬기": {
+    "side": null,
+    "shape": "기대기 > 한 손 막대 짚고 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "탭댄스·스윙": {
+   "탭 스텝(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 발끝 세우기",
+    "phase": "중간",
+    "action": "탭 스텝",
+    "parts": {
+     "팔": "바깥아래·굽힘"
+    }
+   },
+   "린디합 스윙아웃(중간)": {
+    "side": null,
+    "shape": "서기 > 뒤로 기울여 두 팔 앞으로 당기기",
+    "phase": "중간",
+    "action": "린디합 스윙아웃",
+    "parts": {
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "찰스턴 킥(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(다리 앞으로)",
+    "phase": "임팩트",
+    "action": "찰스턴 킥",
+    "parts": {
+     "팔": "바깥·굽힘"
+    }
+   }
+  },
+  "살사·바차타·차차": {
+   "살사 기본 스텝(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "살사 기본 스텝",
+    "parts": {
+     "팔": "앞·접음"
+    }
+   },
+   "바차타 골반 탭(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 발끝 세우기",
+    "phase": "중간",
+    "action": "바차타 골반 탭",
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   },
+   "차차 체크 스텝(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "차차 체크 스텝",
+    "parts": {
+     "오른팔": "바깥위·폄"
+    }
+   }
+  },
+  "왈츠·볼룸": {
+   "볼룸 클로즈드 홀드": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 둥글게 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "볼룸 피니시 포즈": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥위·폄",
+     "몸통": "젖힘"
+    }
+   }
+  },
+  "삼바·훌라·민속춤": {
+   "삼바 바운스(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "삼바 바운스",
+    "parts": {
+     "팔": "바깥위·굽힘"
+    }
+   },
+   "훌라 손짓(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": "중간",
+    "action": "훌라 손짓",
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "아이리시 댄스 점프(임팩트)": {
+    "side": null,
+    "shape": "공중 > 뒤꿈치로 엉덩이 차며 뛰기",
+    "phase": "임팩트",
+    "action": "아이리시 댄스 점프",
+    "parts": {
+     "팔": "아래·폄"
+    }
+   },
+   "코사크 쪼그려 차기(임팩트)": {
+    "side": null,
+    "shape": "쪼그리기 > 한 다리로 쪼그려 다른 다리 앞으로 뻗기",
+    "phase": "임팩트",
+    "action": "코사크 쪼그려 차기",
+    "parts": {
+     "팔": "가로질러·접음"
+    }
+   },
+   "하카": {
+    "side": null,
+    "shape": "서기 > 기마 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·접음",
+     "손": "주먹"
+    }
+   }
+  },
+  "인도·동남아 무용": {
+   "바라타나티얌 아라만디": {
+    "side": null,
+    "shape": "서기 > 기마 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "발끝": "바깥",
+     "팔": "바깥·폄"
+    }
+   },
+   "볼리우드 전구 갈기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "중간",
+    "action": "볼리우드 전구 갈기",
+    "parts": {
+     "왼팔": "앞·굽힘"
+    }
+   },
+   "태국 전통춤 손 젖히기": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·굽힘",
+     "손": "펴짐"
+    }
+   }
+  },
+  "팝핀·락킹·왁킹": {
+   "팝핀 로봇(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": "중간",
+    "action": "팝핀 로봇",
+    "parts": {
+     "왼팔": "앞·접음"
+    }
+   },
+   "락킹 포인트": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴",
+     "다리": "앞아래·굽힘"
+    }
+   },
+   "왁킹 팔 돌리기(중간)": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": "중간",
+    "action": "왁킹 팔 돌리기",
+    "parts": {
+     "팔": "바깥위·폄"
+    }
+   }
+  },
+  "보깅·하우스": {
+   "보깅 데스드롭": {
+    "side": null,
+    "shape": "눕기 > 누워 한 다리 접어 깔기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "보깅 핸드 퍼포먼스": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "하우스 셔플(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(무릎 올림)",
+    "phase": "중간",
+    "action": "하우스 셔플",
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "트월킹·셔플·막춤": {
+   "트월킹": {
+    "side": null,
+    "shape": "쪼그리기 > 벌려 쪼그리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄",
+     "몸통": "숙임"
+    }
+   },
+   "셔플 댄스(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 발끝 세우기",
+    "phase": "중간",
+    "action": "셔플 댄스",
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "막춤 팔 휘젓기(중간)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "중간",
+    "action": "막춤 팔 휘젓기",
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "승무·전통 의식무": {
+   "승무 장삼 뿌리기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": "중간",
+    "action": "승무 장삼 뿌리기",
+    "parts": {
+     "팔": "바깥위·폄"
+    }
+   },
+   "처용무 팔 들기": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥위·굽힘",
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "치어리딩 스턴트": {
+   "리프트 위 서기": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥위·폄"
+    }
+   },
+   "베이스 받치기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   },
+   "엘리베이터 들기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·굽힘"
+    }
+   }
+  },
+  "불교 의례": {
+   "삼배(임팩트)": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": "임팩트",
+    "action": "삼배",
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "합장 반배": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "목탁 치기": {
+    "side": null,
+    "shape": "앉기 > 반가부좌",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   }
+  },
+  "이슬람 예배": {
+   "꿈 서서 낭독": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "루쿠": {
+    "side": null,
+    "shape": "짚기 > 무릎 짚고 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "수주드": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "줄루스": {
+    "side": null,
+    "shape": "꿇기 > 정좌",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "동아시아 인사": {
+   "포권": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "주먹"
+    }
+   },
+   "도게자": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "와이 인사": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임",
+     "머리": "아래"
+    }
+   },
+   "오지기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "아래·폄"
+    }
+   }
+  },
+  "서양 인사·예법": {
+   "커트시": {
+    "side": null,
+    "shape": "서기 > 발목 교차 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "아래·굽힘",
+     "팔": "바깥아래·폄"
+    }
+   },
+   "기사 서임 무릎 꿇기": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "모자 벗어 인사": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·굽힘"
+    }
+   }
+  },
+  "결혼식·돌잔치": {
+   "웨딩 입장 팔짱": {
+    "side": null,
+    "shape": "서기 > 한 손 허리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞아래·폄"
+    }
+   },
+   "부케 던지기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": "임팩트",
+    "action": "부케 던지기",
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "폐백 절 받기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "돌잡이 아기 앉기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 뻗고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "장례·추모": {
+   "분향하기": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "묵념": {
+    "side": null,
+    "shape": "서기 > 배 앞에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "영정 앞 절(임팩트)": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": "임팩트",
+    "action": "영정 앞 절",
+    "parts": {}
+   }
+  },
+  "명절·전통 생활": {
+   "차례상 앞 절": {
+    "side": null,
+    "shape": "꿇기 > 꿇어앉아 이마 대고 손 앞에 짚기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "송편 빚기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘",
+     "몸통": "숙임"
+    }
+   },
+   "김장하기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "다듬이질(중간)": {
+    "side": null,
+    "shape": "꿇기 > 정좌",
+    "phase": "중간",
+    "action": "다듬이질",
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   }
+  },
+  "호러·좀비": {
+   "좀비 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 앞으로 나란히",
+    "phase": "중간",
+    "action": "좀비 걷기",
+    "parts": {
+     "머리": "갸웃@오른",
+     "몸통": "숙임"
+    }
+   },
+   "귀신 기어 나오기(중간)": {
+    "side": null,
+    "shape": "짚기 > 네발",
+    "phase": "중간",
+    "action": "귀신 기어 나오기",
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "겁에 질려 웅크리기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 무릎 껴안기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   }
+  },
+  "서부극·사무라이": {
+   "총 뽑기 직전": {
+    "side": null,
+    "shape": "서기 > 다리 벌려 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "아래·굽힘"
+    }
+   },
+   "사무라이 발도 직전": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "가로질러·굽힘",
+     "다리": "아래·굽힘"
+    }
+   },
+   "칼 내리치기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 런지",
+    "phase": "임팩트",
+    "action": "칼 내리치기",
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   }
+  },
+  "뮤지컬·오페라": {
+   "두 팔 벌려 열창": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘",
+     "머리": "위"
+    }
+   },
+   "가슴에 손 얹고 노래": {
+    "side": null,
+    "shape": "서기 > 가슴에 손 얹기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "바깥·폄"
+    }
+   },
+   "무대 끝 무릎 꿇고 노래": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇고 팔 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "애니·만화 명장면": {
+   "마법소녀 변신": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른다리": "뒤·접음"
+    }
+   },
+   "죠죠 포즈": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·접음",
+     "왼팔": "가로질러·굽힘"
+    }
+   },
+   "나루토 달리기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "나루토 달리기",
+    "parts": {
+     "팔": "뒤아래·폄"
+    }
+   },
+   "슬램덩크 왼손은 거들 뿐(임팩트)": {
+    "side": null,
+    "shape": "공중 > 만세 뛰기",
+    "phase": "임팩트",
+    "action": "슬램덩크 왼손은 거들 뿐",
+    "parts": {
+     "왼팔": "앞위·굽힘"
+    }
+   }
+  },
+  "전대·특촬 히어로": {
+   "변신 포즈": {
+    "side": null,
+    "shape": "서기 > 한 팔 앞으로 뻗고 다른 팔 허리에",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥위·폄"
+    }
+   },
+   "합체 포즈": {
+    "side": null,
+    "shape": "서기 > 기마 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥위·폄",
+     "손": "주먹"
+    }
+   },
+   "필살기 발차기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 공중에서 한 다리 차기",
+    "phase": "임팩트",
+    "action": "필살기 발차기",
+    "parts": {}
+   }
+  },
+  "밈·유행 포즈": {
+   "댑": {
+    "side": null,
+    "shape": "서기 > 한 팔 비스듬히 뻗고 얼굴 팔꿈치에 묻기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "번개 포즈": {
+    "side": null,
+    "shape": "서기 > 한 손 앞위로 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "뒤아래·접음",
+     "다리": "바깥아래·폄"
+    }
+   },
+   "티포즈": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "플랭킹 밈": {
+    "side": null,
+    "shape": "눕기 > 엎드려 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "플로싱(중간)": {
+    "side": null,
+    "shape": "서기 > 짝다리",
+    "phase": "중간",
+    "action": "플로싱",
+    "parts": {
+     "팔": "뒤아래·폄"
+    }
+   }
+  },
+  "명화·역사 사진": {
+   "모나리자": {
+    "side": null,
+    "shape": "앉기 > 무릎 위에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "비너스의 탄생": {
+    "side": null,
+    "shape": "서기 > 짝다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·굽힘",
+     "왼팔": "가로아래·폄"
+    }
+   },
+   "이오지마 국기 게양": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·폄"
+    }
+   },
+   "수병의 키스": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 모아 안기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "절규": {
+    "side": null,
+    "shape": "서기 > 두 손으로 얼굴 가리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "비틂@왼"
+    }
+   }
+  },
+  "사회적 몸짓": {
+   "하이파이브(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": "임팩트",
+    "action": "하이파이브",
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "주먹 인사": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "주먹"
+    }
+   },
+   "어깨동무": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·굽힘"
+    }
+   },
+   "귓속말": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "옆굽힘@오른"
+    }
+   },
+   "손사래 치기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": "중간",
+    "action": "손사래 치기",
+    "parts": {
+     "오른팔": "앞·굽힘",
+     "손": "펴짐"
+    }
+   },
+   "엄지척": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   }
+  },
+  "몰래·숨기": {
+   "살금살금 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "중간",
+    "action": "살금살금 걷기",
+    "parts": {
+     "발끝": "앞",
+     "팔": "바깥아래·굽힘"
+    }
+   },
+   "벽 뒤에서 엿보기": {
+    "side": null,
+    "shape": "기대기 > 벽에 어깨 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "옆@왼"
+    }
+   },
+   "문틈으로 엿보기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "커튼 뒤 숨기": {
+    "side": null,
+    "shape": "서기 > 두 팔로 몸 감싸기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "피로·통증": {
+   "무릎 짚고 헐떡이기": {
+    "side": null,
+    "shape": "짚기 > 무릎 짚고 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "허리 통증 잡기": {
+    "side": null,
+    "shape": "서기 > 한 손 허리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "배 아파 웅크리기": {
+    "side": null,
+    "shape": "눕기 > 모로 웅크려 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "발목 잡고 깡충(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 서기(뒤로 접음)",
+    "phase": "중간",
+    "action": "발목 잡고 깡충",
+    "parts": {
+     "몸통": "숙임",
+     "오른팔": "아래·폄"
+    }
+   },
+   "두통에 이마 짚기": {
+    "side": null,
+    "shape": "서기 > 한 손 이마에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   }
+  },
+  "더위·추위": {
+   "손부채질": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "입김 불어 손 녹이기": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "웅크리고 떨기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 무릎 껴안기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "그늘에 기대 쉬기": {
+    "side": null,
+    "shape": "앉기 > 무릎 세워 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   }
+  },
+  "기다림·지루함": {
+   "시계 보기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "발 구르며 기다리기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 발끝 세우기",
+    "phase": "중간",
+    "action": "발 구르며 기다리기",
+    "parts": {
+     "팔": "가로질러·접음"
+    }
+   },
+   "턱 괴고 멍하니": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "말림"
+    }
+   },
+   "벽에 머리 기대기": {
+    "side": null,
+    "shape": "기대기 > 벽에 팔뚝 대고 이마 기대기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "자신감·위압": {
+   "양손 허리 파워 포즈": {
+    "side": null,
+    "shape": "서기 > 양손 허리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "바깥아래·폄"
+    }
+   },
+   "팔짱 끼고 내려보기": {
+    "side": null,
+    "shape": "서기 > 팔짱",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "책상에 발 올리고 기대기": {
+    "side": null,
+    "shape": "앉기 > 머리 뒤 깍지 끼고 기대 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞·폄"
+    }
+   }
+  },
+  "수줍음·귀여움": {
+   "손가락 꼼지락": {
+    "side": null,
+    "shape": "서기 > 배 앞에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   },
+   "두 주먹 볼에 대기": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "주먹",
+     "머리": "갸웃@오른"
+    }
+   },
+   "한 발 꼬고 서기": {
+    "side": null,
+    "shape": "서기 > 다리 꼬고 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "동물 자세 더": {
+   "강아지 앉아": {
+    "side": null,
+    "shape": "꿇기 > 엉덩이 옆으로 빼고 꿇어앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "토끼 뛰기(중간)": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": "중간",
+    "action": "토끼 뛰기",
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "펭귄 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 발 모아 서기",
+    "phase": "중간",
+    "action": "펭귄 걷기",
+    "parts": {
+     "팔": "바깥아래·폄"
+    }
+   },
+   "캥거루 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 웅크려 뛰기",
+    "phase": "임팩트",
+    "action": "캥거루 뛰기",
+    "parts": {
+     "팔": "앞·접음"
+    }
+   },
+   "뱀 기어가기(중간)": {
+    "side": null,
+    "shape": "눕기 > 엎드려 눕기",
+    "phase": "중간",
+    "action": "뱀 기어가기",
+    "parts": {}
+   }
+  },
+  "아이 생활": {
+   "떼쓰며 바닥 구르기(중간)": {
+    "side": null,
+    "shape": "눕기 > 대자로 눕기",
+    "phase": "중간",
+    "action": "떼쓰며 바닥 구르기",
+    "parts": {
+     "다리": "위·굽힘"
+    }
+   },
+   "엄마 다리 매달리기": {
+    "side": null,
+    "shape": "앉기 > 다리 휘감아 꼬기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "목말 타기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   },
+   "가방 메고 뛰어가기(중간)": {
+    "side": null,
+    "shape": "공중 > 다리 앞뒤로 벌려 뛰기",
+    "phase": "중간",
+    "action": "가방 메고 뛰어가기",
+    "parts": {}
+   }
+  },
+  "청소년·학생 문화": {
+   "교복 주머니 손": {
+    "side": null,
+    "shape": "서기 > 주머니에 손",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "말림"
+    }
+   },
+   "학교 담 넘기(중간)": {
+    "side": null,
+    "shape": "매달리기 > 봉에 배 걸치기",
+    "phase": "중간",
+    "action": "학교 담 넘기",
+    "parts": {}
+   },
+   "운동장 스탠드 앉기": {
+    "side": null,
+    "shape": "앉기 > 무릎 높이 올려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   }
+  },
+  "단체·기념 사진": {
+   "단체 사진 앞줄 쪼그려 앉기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "브이"
+    }
+   },
+   "단체 사진 뒷줄 어깨동무": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·굽힘"
+    }
+   },
+   "기념사진 손가락 하트": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "여행지 엄지척": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   }
+  },
+  "프로필·증명사진": {
+   "증명사진": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "아래·폄"
+    }
+   },
+   "프로필 팔짱 사진": {
+    "side": null,
+    "shape": "서기 > 팔짱",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "비틂@오른"
+    }
+   },
+   "턱선 강조 손 받치기": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   }
+  },
+  "웨딩·아기 화보": {
+   "면사포 들어 보기": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   },
+   "신랑 무릎 꿇고 반지": {
+    "side": null,
+    "shape": "꿇기 > 한 무릎 꿇고 팔 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "백일 아기 엎드려 고개 들기": {
+    "side": null,
+    "shape": "짚기 > 엎드려 팔로 상체 밀어 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "아기 발 손에 들고 찍기": {
+    "side": null,
+    "shape": "앉기 > 무릎 위에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "놀이공원": {
+   "롤러코스터 만세": {
+    "side": null,
+    "shape": "앉기 > 앉아서 기지개",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "회전목마 타기": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "범퍼카 운전": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 뻗어 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "머리띠 쓰고 브이": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   }
+  },
+  "찜질방·목욕탕": {
+   "양머리 하고 눕기": {
+    "side": null,
+    "shape": "눕기 > 팔베개",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "찜질방 엎드려 땀 빼기": {
+    "side": null,
+    "shape": "눕기 > 엎드려 팔 베고 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "탕 속에 기대 앉기": {
+    "side": null,
+    "shape": "앉기 > 미끄러져 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·폄"
+    }
+   },
+   "등 밀어주기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "공항·여행": {
+   "캐리어 위에 앉기": {
+    "side": null,
+    "shape": "앉기 > 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "여권 들고 줄 서기": {
+    "side": null,
+    "shape": "서기 > 짝다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·접음"
+    }
+   },
+   "공항 의자에 누워 자기": {
+    "side": null,
+    "shape": "눕기 > 무릎 세워 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "가로질러·굽힘"
+    }
+   },
+   "배낭 메고 지도 보기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   }
+  },
+  "전통시장": {
+   "좌판 앞 쪼그려 앉기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 팔 무릎에 걸치기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "흥정하며 손짓": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "머리에 짐 이기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·접음"
+    }
+   }
+  },
+  "버스킹·거리 공연": {
+   "기타 치며 노래": {
+    "side": null,
+    "shape": "서기 > 옆으로 서서 두 손 어깨 위로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "곧음"
+    }
+   },
+   "관객 호응 박수 유도": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "모자 내밀어 받기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   }
+  },
+  "국민체조·생활체조": {
+   "팔 돌리기(중간)": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": "중간",
+    "action": "팔 돌리기",
+    "parts": {
+     "팔": "위·폄"
+    }
+   },
+   "옆구리 운동": {
+    "side": null,
+    "shape": "서기 > 옆으로 굽혀 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   },
+   "몸통 돌리기": {
+    "side": null,
+    "shape": "서기 > 몸통 비틀어 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥·폄"
+    }
+   },
+   "제자리 뛰기(임팩트)": {
+    "side": null,
+    "shape": "공중 > 벌려 뛰기",
+    "phase": "임팩트",
+    "action": "제자리 뛰기",
+    "parts": {}
+   },
+   "숨쉬기 운동": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   }
+  },
+  "학교 체육·체력장": {
+   "윗몸일으키기(중간)": {
+    "side": null,
+    "shape": "눕기 > 무릎 세워 눕기",
+    "phase": "중간",
+    "action": "윗몸일으키기",
+    "parts": {
+     "몸통": "말림",
+     "팔": "가로질러·접음"
+    }
+   },
+   "오래매달리기": {
+    "side": null,
+    "shape": "매달리기 > 매달려 팔 굽혀 턱 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "제자리멀리뛰기(준비)": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": "준비",
+    "action": "제자리멀리뛰기",
+    "parts": {
+     "팔": "뒤아래·폄"
+    }
+   },
+   "뜀틀 넘기(중간)": {
+    "side": null,
+    "shape": "짚기 > 손 짚고 다리 앞으로 뻗어 띄우기",
+    "phase": "중간",
+    "action": "뜀틀 넘기",
+    "parts": {
+     "다리": "바깥·폄"
+    }
+   },
+   "앉아 윗몸 앞으로 굽히기": {
+    "side": null,
+    "shape": "앉기 > 앉아서 앞으로 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·폄"
+    }
+   }
+  },
+  "운동회": {
+   "이어달리기 바통 받기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "이어달리기 바통 받기",
+    "parts": {
+     "오른팔": "뒤아래·폄"
+    }
+   },
+   "2인3각 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": "중간",
+    "action": "2인3각 걷기",
+    "parts": {
+     "오른팔": "가로질러·굽힘",
+     "다리": "앞아래·폄"
+    }
+   },
+   "박 터트리기 던지기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "임팩트",
+    "action": "박 터트리기 던지기",
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "기마전 기수": {
+    "side": null,
+    "shape": "앉기 > 다리 벌려 걸터앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "위·폄"
+    }
+   },
+   "기마전 말": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 앞으로 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "이사·짐 나르기": {
+   "소파 함께 들기": {
+    "side": null,
+    "shape": "서기 > 무릎 굽혀 두 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·굽힘"
+    }
+   },
+   "박스 위에 걸터앉아 쉬기": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "사다리차 신호": {
+    "side": null,
+    "shape": "서기 > 한 손 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   }
+  },
+  "세차·차량 관리": {
+   "스펀지로 차 닦기": {
+    "side": null,
+    "shape": "서기 > 숙여 서기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄"
+    }
+   },
+   "타이어 확인 쪼그리기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 바닥 들여다보기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "트렁크에 짐 싣기": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·폄"
+    }
+   }
+  },
+  "빨래·다림질·침구": {
+   "손빨래": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "다림질": {
+    "side": null,
+    "shape": "서기 > 숙여 서서 두 손 아래로 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   },
+   "이불 털기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": "임팩트",
+    "action": "이불 털기",
+    "parts": {
+     "팔": "앞위·폄"
+    }
+   },
+   "빨래 개기": {
+    "side": null,
+    "shape": "앉기 > 양반다리",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·굽힘",
+     "몸통": "숙임"
+    }
+   }
+  },
+  "겨울 놀이": {
+   "눈싸움 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "눈싸움 던지기",
+    "parts": {}
+   },
+   "눈사람 굴리기": {
+    "side": null,
+    "shape": "서기 > 앞으로 기울여 두 팔 앞으로 밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞아래·폄"
+    }
+   },
+   "눈밭에 누워 천사 만들기(중간)": {
+    "side": null,
+    "shape": "눕기 > 대자로 눕기",
+    "phase": "중간",
+    "action": "눈밭에 누워 천사 만들기",
+    "parts": {}
+   },
+   "눈썰매 타기": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   }
+  },
+  "물놀이·여름": {
+   "물총 겨누기": {
+    "side": null,
+    "shape": "서기 > 두 손 모아 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "튜브 끼고 떠 있기": {
+    "side": null,
+    "shape": "서기 > 팔 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·굽힘",
+     "다리": "아래·굽힘"
+    }
+   },
+   "수박 깨기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": "임팩트",
+    "action": "수박 깨기",
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "계곡 물 튀기기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 손 아래로 뻗기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "비·우산": {
+   "우산 쓰고 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": "중간",
+    "action": "우산 쓰고 걷기",
+    "parts": {
+     "오른팔": "앞위·접음",
+     "다리": "앞아래·폄"
+    }
+   },
+   "비 맞으며 만세": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "머리 가리고 뛰기(중간)": {
+    "side": null,
+    "shape": "서기 > 두 손 머리에 얹기",
+    "phase": "중간",
+    "action": "머리 가리고 뛰기",
+    "parts": {
+     "몸통": "숙임"
+    }
+   }
+  },
+  "반려동물 놀이": {
+   "공 던져주기(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "임팩트",
+    "action": "공 던져주기",
+    "parts": {}
+   },
+   "터그 놀이 당기기": {
+    "side": null,
+    "shape": "쪼그리기 > 쪼그려 한 발 앞으로",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "고양이 낚싯대 흔들기(중간)": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": "중간",
+    "action": "고양이 낚싯대 흔들기",
+    "parts": {
+     "오른팔": "앞위·폄"
+    }
+   }
+  },
+  "피크닉": {
+   "돗자리 위 비스듬히 기대기": {
+    "side": null,
+    "shape": "눕기 > 팔꿈치 괴고 상체 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "돗자리 앉아 도시락": {
+    "side": null,
+    "shape": "앉기 > 옆으로 모아 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘"
+    }
+   },
+   "누워 하늘 보기": {
+    "side": null,
+    "shape": "눕기 > 팔베개",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "영화관·공연 관람": {
+   "영화관 의자 기대기": {
+    "side": null,
+    "shape": "앉기 > 기대 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "바깥아래·굽힘"
+    }
+   },
+   "팝콘 먹기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·접음"
+    }
+   },
+   "무서운 장면 눈 가리기": {
+    "side": null,
+    "shape": "앉기 > 무릎 껴안고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·접음"
+    }
+   },
+   "기립 박수": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·굽힘"
+    }
+   }
+  },
+  "콘서트 스탠딩": {
+   "떼창하며 만세": {
+    "side": null,
+    "shape": "서기 > 만세",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "위"
+    }
+   },
+   "슬로건 들기": {
+    "side": null,
+    "shape": "서기 > 두 손 머리 위로 받치기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·굽힘"
+    }
+   },
+   "점프하며 응원(임팩트)": {
+    "side": null,
+    "shape": "공중 > 한 팔 위로 뻗어 뛰기",
+    "phase": "임팩트",
+    "action": "점프하며 응원",
+    "parts": {}
+   },
+   "펜스에 기대기": {
+    "side": null,
+    "shape": "기대기 > 허리 높이에 팔 걸치고 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   }
+  },
+  "군 훈련": {
+   "외줄 타기(중간)": {
+    "side": null,
+    "shape": "매달리기 > 손발로 줄 감아 매달리기",
+    "phase": "중간",
+    "action": "외줄 타기",
+    "parts": {}
+   },
+   "각개전투 엎드리기": {
+    "side": null,
+    "shape": "눕기 > 엎드려 팔꿈치 짚고 한 무릎 당기기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "PT 체조 쪼그려 뛰기(중간)": {
+    "side": null,
+    "shape": "짚기 > 손 짚고 쪼그리기",
+    "phase": "중간",
+    "action": "PT 체조 쪼그려 뛰기",
+    "parts": {}
+   },
+   "수류탄 던지기(준비)": {
+    "side": null,
+    "shape": "서기 > 한 팔 뒤로 젖혀 들기",
+    "phase": "준비",
+    "action": "수류탄 던지기",
+    "parts": {}
+   }
+  },
+  "헬스장 기구": {
+   "레그프레스": {
+    "side": null,
+    "shape": "눕기 > 반쯤 기대 눕기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞위·굽힘"
+    }
+   },
+   "레그컬": {
+    "side": null,
+    "shape": "눕기 > 엎드려 무릎 굽혀 발 들기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "러닝머신 걷기(중간)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "중간",
+    "action": "러닝머신 걷기",
+    "parts": {
+     "팔": "앞아래·굽힘"
+    }
+   },
+   "로잉머신 당기기(마무리)": {
+    "side": null,
+    "shape": "앉기 > 다리 뻗고 앉기",
+    "phase": "마무리",
+    "action": "로잉머신 당기기",
+    "parts": {
+     "팔": "앞·접음",
+     "몸통": "젖힘"
+    }
+   },
+   "케이블 크로스오버(임팩트)": {
+    "side": null,
+    "shape": "서기 > 한 발 앞 내딛기",
+    "phase": "임팩트",
+    "action": "케이블 크로스오버",
+    "parts": {
+     "팔": "앞아래·폄",
+     "몸통": "숙임"
+    }
+   }
+  },
+  "수험생·밤샘": {
+   "머리 감싸고 고민": {
+    "side": null,
+    "shape": "앉기 > 책상에 엎드려 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "위·접음"
+    }
+   },
+   "의자에서 쪽잠": {
+    "side": null,
+    "shape": "앉기 > 미끄러져 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   },
+   "책상에 다리 올리고 공부": {
+    "side": null,
+    "shape": "앉기 > 머리 뒤 깍지 끼고 기대 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "다리": "앞·폄"
+    }
+   }
   }
  },
  "base_parts": {
@@ -4788,9 +10595,8 @@
    "오른팔": "앞·폄",
    "왼팔": "아래·접음"
   },
-  "서기 > 두 주먹 얼굴 앞에 모으기": {
-   "팔": "앞위·접음",
-   "손": "주먹"
+  "서기 > 두 손 얼굴 앞에 모으기": {
+   "팔": "앞위·접음"
   },
   "앉기 > 바로 앉기": {
    "다리": "앞아래·굽힘",
@@ -5087,20 +10893,20 @@
   ]
  },
  "count": {
-  "카테2": 280,
-  "좌우가_다른_카테2": 122,
+  "카테2": 289,
+  "좌우가_다른_카테2": 127,
   "카테2_카테1별": {
-   "서기": 72,
-   "앉기": 56,
-   "눕기": 35,
+   "서기": 74,
+   "앉기": 57,
+   "눕기": 36,
    "꿇기": 16,
-   "쪼그리기": 13,
+   "쪼그리기": 14,
    "기대기": 20,
-   "짚기": 35,
-   "공중": 21,
-   "매달리기": 12
+   "짚기": 36,
+   "공중": 23,
+   "매달리기": 13
   },
-  "기본형_조합": 16800,
+  "기본형_조합": 17340,
   "명자세": {
    "일상": 16,
    "스마트폰·디지털": 7,
@@ -5156,7 +10962,172 @@
    "복싱": 4,
    "유도·레슬링·주짓수": 5,
    "검도·펜싱": 4,
-   "씨름·태극권·기타 무술": 5
+   "씨름·태극권·기타 무술": 5,
+   "몸단장·목욕": 6,
+   "위생·화장실": 4,
+   "옷 입기": 5,
+   "식사·음주": 6,
+   "쇼핑": 5,
+   "독서·취미": 6,
+   "게임 플레이": 4,
+   "사진 촬영자": 4,
+   "공연·무대": 6,
+   "노래방·클럽": 4,
+   "서커스·아크로바틱": 6,
+   "마술·코미디": 3,
+   "영화 액션": 6,
+   "재난·안전": 6,
+   "직업: 경찰·소방·경비": 6,
+   "직업: 의료진": 4,
+   "직업: 요리사·바리스타·서비스": 4,
+   "직업: 건설·물류·정비": 7,
+   "직업: 미용·사무": 4,
+   "정원·목공": 5,
+   "연애·커플": 8,
+   "임신·출산": 4,
+   "장애·보조기구": 4,
+   "물리치료·재활": 4,
+   "동물 흉내": 7,
+   "전통 놀이": 7,
+   "전통 예술": 4,
+   "실내 놀이": 4,
+   "관중·응원": 4,
+   "행사·시상": 4,
+   "연설·시위": 3,
+   "보디빌딩 포즈": 5,
+   "역도·파워리프팅": 3,
+   "사이클·승마": 3,
+   "수상 스포츠": 4,
+   "항공·익스트림": 4,
+   "빙상·컬링": 4,
+   "럭비·미식축구·핸드볼": 4,
+   "사격": 3,
+   "현대무용·재즈": 4,
+   "벨리댄스·플라멩코·탱고": 3,
+   "폴댄스·에어리얼": 4,
+   "무에타이·킥복싱": 4,
+   "카포에라": 3,
+   "합기도·택견": 4,
+   "직업: 교사·강사": 3,
+   "직업: 운동 코치·트레이너": 3,
+   "직업: 요양·돌봄": 3,
+   "직업: 배달·택배·우편": 4,
+   "직업: 환경미화·청소": 4,
+   "직업: 마트·매장": 4,
+   "직업: 전기·배관·도장": 4,
+   "직업: 과학·연구": 3,
+   "직업: 항공·승무": 4,
+   "직업: 방송·언론": 4,
+   "직업: 심판": 4,
+   "직업: 어업·해녀": 3,
+   "직업: 벌목·양봉·목축": 4,
+   "직업: 사육·조련": 3,
+   "직업: 마사지·치료사": 3,
+   "직업: 스턴트·대역": 3,
+   "카페·대기실": 5,
+   "버스 정류장·거리": 5,
+   "공원·벤치": 5,
+   "바·펍": 4,
+   "해변·수영장": 5,
+   "침실": 4,
+   "엘리베이터·에스컬레이터·계단": 4,
+   "교통수단 안": 5,
+   "도서관·스터디": 4,
+   "부엌·식탁": 3,
+   "베란다·창가": 3,
+   "교실": 4,
+   "테니스": 4,
+   "배드민턴·스쿼시": 3,
+   "탁구": 3,
+   "필드하키·크리켓·소프트볼": 4,
+   "피구·족구·세팍타크로": 4,
+   "얼티밋·프리스비": 3,
+   "트램펄린": 4,
+   "줄넘기·훌라후프": 3,
+   "칼리스데닉스": 4,
+   "크로스핏": 4,
+   "에어로빅·줌바": 3,
+   "마라톤·경보": 4,
+   "철인3종·장애물 경기": 4,
+   "봅슬레이·루지·스켈레톤": 3,
+   "스노보드·프리스타일 스키": 3,
+   "산악자전거·BMX": 3,
+   "모터스포츠": 3,
+   "로데오·승마 묘기": 3,
+   "세일링·윈드서핑": 3,
+   "아티스틱 스위밍·수구": 3,
+   "다이빙 경기": 4,
+   "스모": 3,
+   "MMA·종합격투기": 3,
+   "가라테": 3,
+   "쿵푸·우슈": 4,
+   "레슬링": 3,
+   "유도": 3,
+   "주짓수": 3,
+   "검도": 3,
+   "펜싱": 3,
+   "양궁": 2,
+   "볼링": 3,
+   "당구": 3,
+   "게이트볼·파크골프": 3,
+   "탭댄스·스윙": 3,
+   "살사·바차타·차차": 3,
+   "왈츠·볼룸": 2,
+   "삼바·훌라·민속춤": 5,
+   "인도·동남아 무용": 3,
+   "팝핀·락킹·왁킹": 3,
+   "보깅·하우스": 3,
+   "트월킹·셔플·막춤": 3,
+   "승무·전통 의식무": 2,
+   "치어리딩 스턴트": 3,
+   "불교 의례": 3,
+   "이슬람 예배": 4,
+   "동아시아 인사": 4,
+   "서양 인사·예법": 3,
+   "결혼식·돌잔치": 4,
+   "장례·추모": 3,
+   "명절·전통 생활": 4,
+   "호러·좀비": 3,
+   "서부극·사무라이": 3,
+   "뮤지컬·오페라": 3,
+   "애니·만화 명장면": 4,
+   "전대·특촬 히어로": 3,
+   "밈·유행 포즈": 5,
+   "명화·역사 사진": 5,
+   "사회적 몸짓": 6,
+   "몰래·숨기": 4,
+   "피로·통증": 5,
+   "더위·추위": 4,
+   "기다림·지루함": 4,
+   "자신감·위압": 3,
+   "수줍음·귀여움": 3,
+   "동물 자세 더": 5,
+   "아이 생활": 4,
+   "청소년·학생 문화": 3,
+   "단체·기념 사진": 4,
+   "프로필·증명사진": 3,
+   "웨딩·아기 화보": 4,
+   "놀이공원": 4,
+   "찜질방·목욕탕": 4,
+   "공항·여행": 4,
+   "전통시장": 3,
+   "버스킹·거리 공연": 3,
+   "국민체조·생활체조": 5,
+   "학교 체육·체력장": 5,
+   "운동회": 5,
+   "이사·짐 나르기": 3,
+   "세차·차량 관리": 3,
+   "빨래·다림질·침구": 4,
+   "겨울 놀이": 4,
+   "물놀이·여름": 4,
+   "비·우산": 3,
+   "반려동물 놀이": 3,
+   "피크닉": 3,
+   "영화관·공연 관람": 4,
+   "콘서트 스탠딩": 4,
+   "군 훈련": 4,
+   "헬스장 기구": 5,
+   "수험생·밤샘": 3
   }
  }
 }
