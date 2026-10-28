@@ -5,7 +5,8 @@ optional knowledge tag; its main job is an auxiliary search index that checks th
 남녀·노소·에너지 carry the degree for the whole body and are applied conceptually when a pose is made.
 
 Detail controls override parts (팔·다리 = 방향·뻗음 with IK prototypes, 몸통, 머리, 손, 발끝).
-Sided values (@왼/@오른) are written for @오른; @왼 is the mirror image. Face expressions are a separate system.
+Shapes that differ only by a left-right flip are kept once, in their right-side form; a label marks the left-side
+form with 좌우반전=True (the mirror image). Part values (갸웃@왼) still name sides. Face expressions are separate.
 """
 from __future__ import annotations
 
@@ -13,7 +14,7 @@ import json
 
 from .catalog import CAT1, CAT2, NAMED
 
-# 카테2 기본 자세 중 부위 값으로 적어 둔 것 (@오른 기준). 적지 않은 카테2는 이름과 남녀·노소·에너지로 관념적으로 만든다.
+# 카테2 기본 자세 중 부위 값으로 적어 둔 것 (오른쪽 기준). 적지 않은 카테2는 이름과 남녀·노소·에너지로 관념적으로 만든다.
 BASE_PARTS = {
     ("서기", "바로 서기"): {},
     ("서기", "발 모아 서기"): {"다리": "가로아래·폄"},
@@ -77,7 +78,7 @@ STYLE = {
 }
 BASE_AXES = ["카테1", "카테2", "남녀", "노소", "에너지"]
 NAMED_AXES = ["명카테1", "명카테2"]
-LABEL_KEYS = BASE_AXES + NAMED_AXES + ["부위"]
+LABEL_KEYS = BASE_AXES + ["좌우반전"] + NAMED_AXES + ["부위"]
 
 # ----------------------------------------------------------------------------- detail controls (parts)
 PARTS = ["몸통", "머리", "왼팔", "오른팔", "왼손", "오른손", "왼다리", "오른다리", "왼발끝", "오른발끝"]
@@ -143,38 +144,24 @@ def _mirror_parts(parts):
             for p, v in parts.items()}
 
 
-def split_cat2(v):
-    name, _, side = v.partition("@")
-    return name, side or None
-
-
-def _check_sided(what, value, spec_side):
-    name, side = split_cat2(value)
-    if (spec_side is None) != (side is None):
-        raise ValueError(f"{what}={value!r}: " + (f"needs @왼/@오른 ({spec_side})" if side is None else "takes no side"))
-    if side is not None and side not in SW:
-        raise ValueError(f"{what}: side {side!r}")
-    return name, side
+def _no_side(what, value):
+    if "@" in str(value):
+        raise ValueError(f"{what}={value!r}: 카테2·명카테2는 오른쪽 기준 하나뿐이다. 왼쪽이면 좌우반전=True로 적는다")
+    return value
 
 
 def _named(label):
-    """(spec, side) of the 명카테2 in the label, or (None, None)."""
+    """Spec of the 명카테2 in the label, or None."""
     n1, n2 = label.get("명카테1"), label.get("명카테2")
-    if n2 is None:
-        return None, None
-    name, side = split_cat2(n2)
-    return NAMED[n1][name], side
+    return None if n2 is None else NAMED[n1][n2]
 
 
 def _cat(label):
     """(카테1, 카테2) - written in the label; if blank, the shape the named pose points at (used to build the pose)."""
     if "카테1" in label:
         return label["카테1"], label.get("카테2")
-    spec, side = _named(label)
-    if spec is None:
-        return None, None
-    c1, c2 = spec["shape"]
-    return c1, (f"{c2}@{side or '오른'}" if CAT2[c1][c2]["side"] else c2)
+    spec = _named(label)
+    return (None, None) if spec is None else spec["shape"]
 
 
 # ----------------------------------------------------------------------------- label operations
@@ -182,16 +169,16 @@ def validate(label: dict):
     for k in label:
         if k not in LABEL_KEYS:
             raise KeyError(k)
+    if label.get("좌우반전") not in (None, True):
+        raise ValueError("좌우반전은 True이거나 없어야 한다 (오른쪽 기준이면 적지 않음)")
     n1, n2 = label.get("명카테1"), label.get("명카테2")
     if n2 is not None and n1 is None:
         raise ValueError("명카테2 needs 명카테1")
     if n1 is not None:
         if n1 not in NAMED:
             raise ValueError(f"명카테1={n1!r} not in {list(NAMED)}")
-        if n2 is not None:
-            if split_cat2(n2)[0] not in NAMED[n1]:
-                raise ValueError(f"명카테2={n2!r} is not under 명카테1={n1!r}: {list(NAMED[n1])}")
-            _check_sided("명카테2", n2, NAMED[n1][split_cat2(n2)[0]]["side"])
+        if n2 is not None and _no_side("명카테2", n2) not in NAMED[n1]:
+            raise ValueError(f"명카테2={n2!r} is not under 명카테1={n1!r}: {list(NAMED[n1])}")
     if "카테2" in label and "카테1" not in label:
         raise ValueError("카테2 needs 카테1")
     c1, c2 = _cat(label)
@@ -199,54 +186,54 @@ def validate(label: dict):
         raise ValueError("카테1 is blank and there is no named pose to take the shape from")
     if c1 not in CAT1:
         raise ValueError(f"카테1={c1!r} not in {CAT1}")
-    if c2 is None or split_cat2(c2)[0] not in CAT2[c1]:
+    if c2 is None or _no_side("카테2", c2) not in CAT2[c1]:
         raise ValueError(f"카테2={c2!r} is not under 카테1={c1!r}: {list(CAT2[c1])}")
-    _check_sided("카테2", c2, CAT2[c1][split_cat2(c2)[0]]["side"])
     for k, a in STYLE.items():
         if k in label and label[k] not in a["values"]:
             raise ValueError(f"{k}={label[k]!r} not in {a['values']}")
-    for spec in (_named(label)[0] or {}).get("parts", {}), label.get("부위", {}):
+    for spec in (_named(label) or {}).get("parts", {}), label.get("부위", {}):
         for p, v in _expand_parts(spec).items():
             _check_part_value(p, v)
 
 
 def resolve(label: dict) -> dict:
     """Everything needed to build the pose: style values, how the body is placed, and one value per part.
-    defaults < 카테2 base posture < 명자세 < 부위 (each sided base is mirrored for @왼)."""
+    The right-side form is built from defaults < 카테2 base posture < 명자세 detail; 좌우반전 mirrors it;
+    부위 (written as the pose actually is) goes on last."""
     validate(label)
     c1, c2 = _cat(label)
-    name, side = split_cat2(c2)
-    spec = CAT2[c1][name]
+    spec = CAT2[c1][c2]
     parts = _expand_parts(DEFAULT_PARTS)
-    base = _expand_parts(BASE_PARTS.get((c1, name), {}))
-    parts.update(_mirror_parts(base) if side == "왼" else base)
-    nspec, nside = _named(label)
+    parts.update(_expand_parts(BASE_PARTS.get((c1, c2), {})))
+    nspec = _named(label)
     if nspec is not None:
-        named = _expand_parts(nspec["parts"])
-        parts.update(_mirror_parts(named) if nside == "왼" else named)
-    parts.update(_expand_parts(label.get("부위", {})))
+        parts.update(_expand_parts(nspec["parts"]))
     put = spec.get("put") or PUT_DEFAULT
     if put == "옆 아래":
-        put = f"{side}옆 아래"
-    return dict(카테1=c1, 카테2=c2, 명카테1=label.get("명카테1"), 명카테2=label.get("명카테2"), 놓임=put,
-                **{k: label.get(k, a["neutral"]) for k, a in STYLE.items()}, 부위={p: parts[p] for p in PARTS})
+        put = "오른옆 아래"
+    if label.get("좌우반전"):
+        parts = _mirror_parts(parts)
+        put = {"오른옆 아래": "왼옆 아래"}.get(put, put)
+    parts.update(_expand_parts(label.get("부위", {})))
+    return dict(카테1=c1, 카테2=c2, 좌우반전=bool(label.get("좌우반전")), 명카테1=label.get("명카테1"),
+                명카테2=label.get("명카테2"), 놓임=put, **{k: label.get(k, a["neutral"]) for k, a in STYLE.items()},
+                부위={p: parts[p] for p in PARTS})
 
 
 def flip(label: dict, op: str):
-    """LR: swap every side (카테2, 명카테2, detail parts). UD: only defined between 카테2 pairs in UD_MAP (else None)."""
+    """LR: toggle 좌우반전 and swap left/right detail parts. UD: only between 카테2 pairs in UD_MAP (else None)."""
     out = dict(label)
     if op == "LR":
-        for k in ("카테2", "명카테2"):
-            if k in label:
-                name, side = split_cat2(label[k])
-                if side:
-                    out[k] = f"{name}@{SW[side]}"
+        if label.get("좌우반전"):
+            del out["좌우반전"]
+        else:
+            out["좌우반전"] = True
         if "부위" in label:
             out["부위"] = _mirror_parts(label["부위"])       # group keys (팔/손/다리) stay, named sides swap
         return out
     if "카테1" not in label:
         return None
-    key = (label["카테1"], split_cat2(label["카테2"])[0])
+    key = (label["카테1"], label["카테2"])
     if key not in UD_MAP:
         return None
     out["카테1"], out["카테2"] = UD_MAP[key]
@@ -264,7 +251,7 @@ def ik_target(part, value):
 
 
 def code(label: dict) -> str:
-    s = " / ".join(str(label.get(k, "·")) for k in BASE_AXES)
+    s = " / ".join(str(label.get(k, "·")) for k in BASE_AXES) + (" [좌우반전]" if label.get("좌우반전") else "")
     if label.get("명카테1"):
         s += f"  | {label['명카테1']}" + (f" > {label['명카테2']}" if label.get("명카테2") else "")
     if label.get("부위"):
@@ -276,8 +263,8 @@ def count():
     n2 = sum(len(v) for v in CAT2.values())
     sided = sum(1 for v in CAT2.values() for s in v.values() if s["side"])
     named = {k: len(v) for k, v in NAMED.items()}
-    return dict(카테2=n2, 쪽_있는_카테2=sided, 카테2_카테1별={k: len(v) for k, v in CAT2.items()},
-                기본형_조합=(n2 + sided) * 3 * 4 * 5, 명자세=named)
+    return dict(카테2=n2, 좌우가_다른_카테2=sided, 카테2_카테1별={k: len(v) for k, v in CAT2.items()},
+                기본형_조합=n2 * 3 * 4 * 5, 명자세=named)
 
 
 def coverage():
@@ -302,7 +289,7 @@ def export(path):
            "detail": {"parts": PARTS, "groups": GROUPS, "arm_leg": {"방향": DIRS, "뻗음": REACH}, "몸통": TORSO, "머리": HEAD,
                       "손": HAND, "발끝": FOOT, "default": DEFAULT_PARTS},
            "priority": "기본값 < 카테2 기본 자세 < 명자세 추가 제어 < 부위",
-           "flip": {"LR": "카테2·명카테2의 쪽과 좌우 부위를 맞바꿈",
+           "flip": {"LR": "좌우반전 표시를 켜고 끔, 좌우 부위를 맞바꿈 (카테2·명카테2는 오른쪽 기준 하나뿐)",
                     "UD": {f"{a[0]}.{a[1]}": f"{b[0]}.{b[1]}" for a, b in UD_MAP.items()}},
            "transitions": TRANS, "count": count()}
     json.dump(out, open(path, "w"), ensure_ascii=False, indent=1)
@@ -315,55 +302,50 @@ EXAMPLES = {
     "노인이 서 있기": dict(카테1="서기", 카테2="바로 서기", 노소="노년", 에너지="처짐"),
     "만세": dict(카테1="서기", 카테2="만세", 에너지="힘참", 명카테1="일상", 명카테2="만세"),
     "앉아서 만세": dict(카테1="앉기", 카테2="바로 앉기", 부위={"팔": "위·폄", "머리": "위"}),
-    "여성스럽게 비껴 앉기": dict(카테1="앉기", 카테2="비껴 앉기@왼", 남녀="여성적", 에너지="편안", 부위={"머리": "갸웃@왼"}),
+    "여성스럽게 비껴 앉기": dict(카테1="앉기", 카테2="비껴 앉기", 좌우반전=True, 남녀="여성적", 에너지="편안", 부위={"머리": "갸웃@왼"}),
     "다리 벌려 젖혀 앉기": dict(카테1="앉기", 카테2="기대 앉기", 남녀="남성적", 에너지="편안"),
-    "다리 꼬고 턱 괴기": dict(카테1="앉기", 카테2="다리 꼬기@오른", 명카테1="일상", 명카테2="턱 괴기@왼",
-                       부위={"왼팔": "앞위·접음", "머리": "갸웃@왼"}),
-    "손 흔들기": dict(카테1="서기", 카테2="한 손 굽혀 올리기@오른", 명카테1="일상", 명카테2="손 흔들기(중간)@오른"),
-    "아래막기 (카테 공란)": dict(에너지="힘참", 명카테1="태권도", 명카테2="아래막기(임팩트)@왼"),
-    "돌려차기 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="돌려차기(임팩트)@오른"),
-    "돌려차기 무릎 접은 순간 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="돌려차기(중간)@오른"),
-    "옆차기 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="옆차기(임팩트)@오른"),
-    "아라베스크": dict(카테1="서기", 카테2="한 발 서기(다리 뒤로)@오른", 에너지="힘참", 명카테1="발레", 명카테2="아라베스크@오른"),
+    "다리 꼬고 턱 괴기": dict(카테1="앉기", 카테2="다리 꼬기", 명카테1="일상", 명카테2="턱 괴기"),
+    "손 흔들기": dict(카테1="서기", 카테2="한 손 굽혀 올리기", 명카테1="일상", 명카테2="손 흔들기(중간)"),
+    "아래막기 (카테 공란)": dict(에너지="힘참", 명카테1="태권도", 명카테2="아래막기(임팩트)", 좌우반전=True),
+    "돌려차기 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="돌려차기(임팩트)"),
+    "돌려차기 무릎 접은 순간 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="돌려차기(중간)"),
+    "왼발 옆차기 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="옆차기(임팩트)", 좌우반전=True),
+    "옆차기 (카테 공란)": dict(에너지="폭발적", 명카테1="태권도", 명카테2="옆차기(임팩트)"),
+    "아라베스크": dict(카테1="서기", 카테2="한 발 서기(다리 뒤로)", 에너지="힘참", 명카테1="발레", 명카테2="아라베스크"),
     "발레 1번 포지션 (카테 공란)": dict(명카테1="발레", 명카테2="1번 포지션"),
     "다운독": dict(카테1="짚기", 카테2="엉덩이 들어 손발 짚기", 명카테1="요가", 명카테2="다운독"),
     "아이가 쪼그려 앉기": dict(카테1="쪼그리기", 카테2="쪼그려 앉기", 노소="아이"),
     "물구나무": dict(카테1="짚기", 카테2="물구나무", 에너지="힘참"),
-    "모로 누워 웅크리기": dict(카테1="눕기", 카테2="모로 웅크려 눕기@오른", 에너지="처짐"),
+    "모로 누워 웅크리기": dict(카테1="눕기", 카테2="모로 웅크려 눕기", 에너지="처짐"),
     "턱걸이 끝": dict(카테1="매달리기", 카테2="매달려 팔 굽혀 턱 올리기", 에너지="힘참"),
 }
 EXAMPLE_TRANS = {"손 흔들기": {"반복": "반복", "진동 방향": "좌우", "속도": "보통", "지속": "유지"}}
 
 if __name__ == "__main__":
-    # base postures are valid; every sided 카테2 at @왼 is the mirror of @오른
+    # base postures are valid; every 카테2 and 명자세 resolves, and 좌우반전 gives the mirror image
     for (c1, c2), parts in BASE_PARTS.items():
         assert c2 in CAT2[c1], (c1, c2)
         for p, v in _expand_parts(parts).items():
             _check_part_value(p, v)
     for c1, items in CAT2.items():
-        for name, spec in items.items():
-            if spec["side"]:
-                r = resolve(dict(카테1=c1, 카테2=f"{name}@오른"))
-                l = resolve(dict(카테1=c1, 카테2=f"{name}@왼"))
-                assert _mirror_parts(r["부위"]) == l["부위"], (c1, name)
-            else:
-                resolve(dict(카테1=c1, 카테2=name))
-    # every named pose resolves, points at an existing 카테2, and mirrors
+        for name in items:
+            r, l = resolve(dict(카테1=c1, 카테2=name)), resolve(dict(카테1=c1, 카테2=name, 좌우반전=True))
+            assert _mirror_parts(r["부위"]) == l["부위"], (c1, name)
     for n1, items in NAMED.items():
         for name, spec in items.items():
             for p, v in _expand_parts(spec["parts"]).items():
                 _check_part_value(p, v)
             c1, c2 = spec["shape"]
             assert c2 in CAT2.get(c1, {}), ("명자세가 가리키는 카테2가 없음", n1, name, c1, c2)
-            assert not (CAT2[c1][c2]["side"] and not spec["side"]), ("쪽 있는 카테2에 쪽 없는 명자세", n1, name)
-            if spec["side"]:
-                r = resolve(dict(명카테1=n1, 명카테2=f"{name}@오른"))["부위"]
-                l = resolve(dict(명카테1=n1, 명카테2=f"{name}@왼"))["부위"]
-                assert _mirror_parts(r) == l, (n1, name)
-            else:
-                resolve(dict(명카테1=n1, 명카테2=name))
+            r, l = resolve(dict(명카테1=n1, 명카테2=name)), resolve(dict(명카테1=n1, 명카테2=name, 좌우반전=True))
+            assert _mirror_parts(r["부위"]) == l["부위"], (n1, name)
+    try:
+        validate(dict(카테1="앉기", 카테2="다리 꼬기@왼"))
+        raise AssertionError("@ must be refused")
+    except ValueError:
+        pass
     c = count()
-    print(f"기본형: 카테1 {len(CAT1)} / 카테2 {c['카테2']} (쪽 있는 것 {c['쪽_있는_카테2']}) / 남녀 3 / 노소 4 / 에너지 5")
+    print(f"기본형: 카테1 {len(CAT1)} / 카테2 {c['카테2']} (좌우가 다른 것 {c['좌우가_다른_카테2']}, 오른쪽 기준만) / 남녀 3 / 노소 4 / 에너지 5")
     print("  카테2: " + ", ".join(f"{k} {v}" for k, v in c["카테2_카테1별"].items()))
     print("명자세(보조 탐색 지표): " + ", ".join(f"{k} {v}" for k, v in c["명자세"].items()) + f"  = {sum(c['명자세'].values())}")
     acts = {}
