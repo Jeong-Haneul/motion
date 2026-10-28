@@ -43891,6 +43891,360 @@
     "action": null,
     "parts": {}
    }
+  },
+  "앉아서 방송·스트리밍": {
+   "카메라 쪽으로 얼굴 들이밀기": {
+    "side": null,
+    "shape": "앉기 > 앉아서 앞으로 숙이기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "앞"
+    }
+   },
+   "물건 렌즈에 바짝 대 초점 맞추기": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 뻗어 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "앞"
+    }
+   },
+   "한 손으로 물건 렌즈 앞에 들기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄",
+     "오른손": "자연"
+    }
+   },
+   "손바닥으로 렌즈 가리기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·폄",
+     "오른손": "펴짐"
+    }
+   },
+   "웹캠 각도 맞추기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·굽힘",
+     "머리": "위"
+    }
+   },
+   "채팅 읽으려 모니터 쪽으로 숙이기": {
+    "side": null,
+    "shape": "앉기 > 무릎에 팔꿈치 대고 숙여 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "앞"
+    }
+   },
+   "마이크 끌어당겨 말하기": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임"
+    }
+   },
+   "헤드셋 한쪽 누르며 듣기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥위·접음",
+     "머리": "갸웃@오른"
+    }
+   },
+   "후원 리액션 두 손 들기": {
+    "side": null,
+    "shape": "앉기 > 앉아서 기지개",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "젖힘"
+    }
+   },
+   "놀라서 의자 뒤로 젖히기": {
+    "side": null,
+    "shape": "앉기 > 기대 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·굽힘",
+     "몸통": "젖힘"
+    }
+   },
+   "언박싱 상자 들어 보이기": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "아래"
+    }
+   },
+   "게임 패드 쥐고 몰입": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임",
+     "머리": "앞"
+    }
+   },
+   "키보드 마우스 잡고 게임": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "곧음"
+    }
+   },
+   "턱 괴고 시청자와 수다": {
+    "side": null,
+    "shape": "앉기 > 턱 괴고 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "의자 돌려 뒤 돌아보기": {
+    "side": null,
+    "shape": "앉기 > 앉아서 몸통 비틀기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "방송 끝 두 손 흔들기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞위·굽힘",
+     "손": "펴짐"
+    }
+   },
+   "화면 밖 가리키기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "바깥·폄",
+     "오른손": "가리킴"
+    }
+   },
+   "ASMR 마이크에 두 손 모으기": {
+    "side": null,
+    "shape": "앉기 > 두 팔 앞으로 굽혀 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "몸통": "숙임",
+     "머리": "갸웃@오른"
+    }
+   },
+   "먹방 숟가락 카메라에 내밀기": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘"
+    }
+   }
+  },
+  "손·팔 제스처 자세": {
+   "손가락으로 숫자 세기": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "두 손 비비기": {
+    "side": null,
+    "shape": "서기 > 가슴 앞에 두 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "검지 까딱 부르기": {
+    "side": null,
+    "shape": "서기 > 한 손 앞으로 내밀기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘",
+     "오른손": "가리킴"
+    }
+   },
+   "턱 쓰다듬으며 생각": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "왼팔": "가로질러·접음"
+    }
+   },
+   "두 손으로 사각 프레임 만들기": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "브이"
+    }
+   },
+   "손 귀에 대고 안 들려": {
+    "side": null,
+    "shape": "서기 > 한 손 귀에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   },
+   "손으로 목 긋기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "가로질러·접음",
+     "오른손": "펴짐"
+    }
+   },
+   "머리 옆 손가락 돌리기": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴"
+    }
+   },
+   "손 부채질": {
+    "side": null,
+    "shape": "서기 > 한 손 얼굴 옆에 들기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "펴짐"
+    }
+   },
+   "두 손 들어 항복": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐"
+    }
+   },
+   "손바닥 위로 펴 모르겠다": {
+    "side": null,
+    "shape": "서기 > 두 팔 앞으로 둥글게 벌리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "펴짐",
+     "머리": "갸웃@오른"
+    }
+   },
+   "손가락 입술에 대고 고민": {
+    "side": null,
+    "shape": "서기 > 한 손 턱에 대기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른손": "가리킴",
+     "머리": "위"
+    }
+   },
+   "주먹 쥐고 파이팅": {
+    "side": null,
+    "shape": "서기 > 두 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "손": "주먹"
+    }
+   },
+   "작은 손 하트": {
+    "side": null,
+    "shape": "서기 > 한 손 굽혀 올리기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·접음"
+    }
+   },
+   "두 손 모아 부탁": {
+    "side": null,
+    "shape": "서기 > 두 손 얼굴 앞에 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "머리": "갸웃@오른"
+    }
+   },
+   "앉아서 손바닥 펴 설명": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "팔": "앞·굽힘",
+     "손": "펴짐"
+    }
+   },
+   "앉아서 손가락 세워 강조": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞위·접음",
+     "오른손": "가리킴"
+    }
+   },
+   "앉아서 두 손 깍지 끼고 듣기": {
+    "side": null,
+    "shape": "앉기 > 무릎 위에 손 모으기",
+    "phase": null,
+    "action": null,
+    "parts": {}
+   },
+   "앉아서 손사래": {
+    "side": null,
+    "shape": "앉기 > 바로 앉기",
+    "phase": null,
+    "action": null,
+    "parts": {
+     "오른팔": "앞·굽힘",
+     "오른손": "펴짐"
+    }
+   }
   }
  },
  "base_parts": {
@@ -45233,7 +45587,9 @@
    "벌레스크·쇼걸": 6,
    "섹시 댄스 플로어워크": 6,
    "누드 명화·조각 자세": 7,
-   "누드 크로키 모델 자세": 5
+   "누드 크로키 모델 자세": 5,
+   "앉아서 방송·스트리밍": 19,
+   "손·팔 제스처 자세": 19
   }
  }
 }
