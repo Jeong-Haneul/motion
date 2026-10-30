@@ -13,8 +13,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(HERE, "cache")
 API = "https://commons.wikimedia.org/w/api.php"
 UA = "motionspec-refs/0.1 (https://github.com/jeong-haneul/motion)"
-N_CAND = 6
-THUMB_W = 256
+N_CAND = 8
+THUMB_W = 250
 FREE = re.compile(r"^(CC0|Public domain|PD|CC BY(-SA)? [\d.]+)", re.I)
 
 
@@ -39,6 +39,15 @@ def strip_html(s):
     return re.sub(r"<[^>]+>", "", s or "").strip()
 
 
+def thumb_url(url):
+    # thumb.wikimedia.org 대신 upload.wikimedia.org의 표준 폭 썸네일 경로를 쓴다
+    head, _, rest = url.partition("/wikipedia/commons/")
+    if not rest:
+        return None
+    name = rest.rsplit("/", 1)[-1]
+    return f"{head}/wikipedia/commons/thumb/{rest}/{THUMB_W}px-{name}"
+
+
 def search(query):
     q = urllib.parse.urlencode({
         "action": "query", "format": "json", "generator": "search",
@@ -53,9 +62,10 @@ def search(query):
         lic = meta.get("LicenseShortName", {}).get("value", "")
         if not FREE.match(lic):
             continue
+        url = (ii.get("url") or "").split("?")[0]
         out.append({
-            "title": p["title"], "page": ii.get("descriptionurl"), "url": ii.get("url"),
-            "thumb": ii.get("thumburl"), "license": lic,
+            "title": p["title"], "page": ii.get("descriptionurl"), "url": url,
+            "thumb": thumb_url(url), "license": lic,
             "author": strip_html(meta.get("Artist", {}).get("value")),
         })
         if len(out) == N_CAND:
