@@ -7,21 +7,27 @@
 저장소에는 이미지 파일을 넣지 않고 원본 주소·작가·라이선스만 refs.json에 남긴다.
 필요한 접속: commons.wikimedia.org, upload.wikimedia.org
 """
-import csv, json, os, re, sys, time, urllib.parse, urllib.request
+import csv, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(HERE, "cache")
 API = "https://commons.wikimedia.org/w/api.php"
-UA = "motionspec-refs/0.1 (posture label reference collection)"
+UA = "motionspec-refs/0.1 (https://github.com/jeong-haneul/motion)"
 N_CAND = 6
 THUMB_W = 256
 FREE = re.compile(r"^(CC0|Public domain|PD|CC BY(-SA)? [\d.]+)", re.I)
 
 
-def get(url):
+def get(url, tries=6):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read()
+    for k in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 503) or k == tries - 1:
+                raise
+            time.sleep(int(e.headers.get("Retry-After") or 0) or 5 * 2 ** k)
 
 
 def rows():
@@ -81,7 +87,7 @@ def cmd_search():
         cands[key] = cs
         json.dump(cands, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(f"[{i}] {key}: 후보 {len(cs)}개")
-        time.sleep(0.5)
+        time.sleep(1.5)
 
 
 def cmd_sheets():
