@@ -5,7 +5,7 @@
     python3 motionspec/refs/collect.py pick [named]     # picks 파일(고른 후보 번호)로 refs 파일 작성
 
 기본은 카테2(queries.tsv → refs.json), named는 명자세(named_queries.tsv → named_refs.json).
-검색은 한 번만 하고, 결과가 없으면 그 항목은 넘어간다.
+명자세는 원어·영어·한국어 검색어로 각각 한 번씩 찾아 후보를 합치고, 모두 비면 그 항목은 넘어간다.
 저장소에는 이미지 파일을 넣지 않고 원본 주소·작가·라이선스만 refs 파일에 남긴다.
 필요한 접속: commons.wikimedia.org, upload.wikimedia.org
 """
@@ -20,7 +20,7 @@ SETS = {
     # 이름: (검색어 파일, 열 두 개, 캐시 폴더, 썸네일 접두(None이면 받지 않음), 후보 수, picks 파일, refs 파일)
     # 명자세는 썸네일 서버의 요청 제한 때문에 썸네일 없이 파일 제목·설명으로 고른다
     "cat2": ("queries.tsv", ("카테1", "카테2"), CACHE, "", 8, "picks.tsv", "refs.json"),
-    "named": ("named_queries.tsv", ("명카테1", "명카테2"), os.path.join(CACHE, "named"), None, 5,
+    "named": ("named_queries.tsv", ("명카테1", "명카테2"), os.path.join(CACHE, "named"), None, 6,
               "named_picks.tsv", "named_refs.json"),
 }
 SET = SETS["cat2"]
@@ -63,6 +63,26 @@ def thumb_url(url):
     return f"{head}/wikipedia/commons/thumb/{rest}/{THUMB_W}px-{name}"
 
 
+QUERY_COLS = (("원어검색어", "원어"), ("검색어", "en"), ("한국어검색어", "ko"))
+
+
+def search_row(r):
+    """행의 검색어 열들(원어·영어·한국어)로 각각 검색해 겹치지 않게 합친다."""
+    qs = [(r.get(col, "").strip(), lang if lang != "원어" else (r.get("언어") or "원어"))
+          for col, lang in QUERY_COLS if col in r]
+    qs = [(q, l) for q, l in qs if q and q != "-"]
+    if len(qs) <= 1:
+        return [dict(c, lang=qs[0][1]) for c in search(qs[0][0])] if qs else []
+    per = max(2, N_CAND // len(qs) + 1)
+    seen, out = set(), []
+    for q, lang in qs:
+        for c in search(q)[:per]:
+            if c["title"] not in seen:
+                seen.add(c["title"])
+                out.append(dict(c, lang=lang, query=q))
+    return out[:N_CAND]
+
+
 def search(query):
     q = urllib.parse.urlencode({
         "action": "query", "format": "json", "generator": "search",
@@ -99,11 +119,8 @@ def cmd_search():
         key = key_of(r)
         if key in cands:
             continue
-        if r["검색어"].strip() in ("", "-"):
-            cands[key] = []
-            continue
         try:
-            cs = search(r["검색어"])
+            cs = search_row(r)
         except Exception as e:
             print(f"[{i}] {key}: 검색 실패 {e}")
             continue
